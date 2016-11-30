@@ -7,4 +7,4 @@ OrchardVersion: 1.10.0
 Description: Orchard Field wrapper for the Agile Uploader, an easy to use Flash/jQuery multiple file uploader which downsizes images prior to upload to the server
 FeatureDescription: Orchard Field wrapper for the Agile Uploader, an easy to use Flash/jQuery multiple file uploader which downsizes images prior to upload to the server
 Category: Fields
-Dependencies: Orchard.Resource, Orchard.Media, Orchard.Tokens
+Dependencies: Orchard.Resources, Orchard.Media, Orchard.Tokens
