@@ -1,0 +1,13 @@
+State: Running
+Themes: 
+Modules: 
+Name: Default
+DataProvider: SqlServer
+DataConnectionString: Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Orchard;Integrated Security=True
+DataTablePrefix: null
+RequestUrlHost: null
+RequestUrlPrefix: null
+EncryptionAlgorithm: AES
+EncryptionKey: 898C0E4958ED2999CCAF60FCAA81C92D1B7B9D08C2E90CB31EABCFE14ACB1F72
+HashAlgorithm: HMACSHA256
+HashKey: 118EDD580538360E5055E4D2346D515CBF87BFA7212B1B208F70BF6527FB39E751200C916CF1A3E11B20B556EF232FE21AEED2DB5941BB0E519EA6287A7E9CDD

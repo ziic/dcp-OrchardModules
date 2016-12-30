@@ -1,0 +1,16 @@
+﻿Name: dcp.Routing
+AntiForgery: enabled
+Author: Stanislav Sotkin
+Website: https://dcporchardmodules.codeplex.com/
+Version: 1.0.0
+OrchardVersion: 1.10.1
+Description: Manage routes, URL
+Features:
+    dcp.Routing:
+        Description: Managing redirects
+		Category: Routing
+		Dependencies: MidnightPixel.jQueryValidate
+	dcp.Routing.UrlUpdating:
+		Description: Redirects for updated slugs
+		Category: Routing
+		Dependencies: Orchard.Autoroute

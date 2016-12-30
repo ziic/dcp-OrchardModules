@@ -1,0 +1,1070 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExpressiveAnnotations</name>
+    </assembly>
+    <members>
+        <member name="T:ExpressiveAnnotations.Analysis.Expr">
+            <summary>
+                An <see cref="T:System.Linq.Expressions.Expression" /> wrapper.
+            </summary>
+            <remarks>
+                Provides some additional type checks and unburdens parser form this excessive logic.
+            </remarks>
+        </member>
+        <member name="T:ExpressiveAnnotations.Analysis.TypeAdapter">
+            <summary>
+                Adjusts types compatibility for operations.
+            </summary>
+        </member>
+        <member name="T:ExpressiveAnnotations.Analysis.ParseErrorException">
+            <summary>
+                The exception thrown when parse operation detects error in a specified expression.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.ParseErrorException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.ParseErrorException" /> class.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.ParseErrorException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.ParseErrorException" /> class.
+            </summary>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.ParseErrorException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.ParseErrorException" /> class.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.ParseErrorException.#ctor(System.String,System.String,ExpressiveAnnotations.Analysis.Location)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.ParseErrorException" /> class.
+            </summary>
+            <param name="error">The error message.</param>
+            <param name="expression">The expression.</param>
+            <param name="location">The error location.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.ParseErrorException.#ctor(System.String,System.String,ExpressiveAnnotations.Analysis.Location,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.ParseErrorException" /> class.
+            </summary>
+            <param name="error">The error message.</param>
+            <param name="expression">The expression.</param>
+            <param name="location">The error location.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.ParseErrorException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.ParseErrorException" /> class.
+            </summary>
+            <param name="info">The information.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="P:ExpressiveAnnotations.Analysis.ParseErrorException.Error">
+            <summary>
+                Gets the error message.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Analysis.ParseErrorException.Expression">
+            <summary>
+                Gets the expression.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Analysis.ParseErrorException.Location">
+            <summary>
+                Gets the error location.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.ParseErrorException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+                Gets the object data.
+            </summary>
+            <param name="info">The information.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="T:ExpressiveAnnotations.Analysis.Location">
+            <summary>
+                Contains the location information related to some arbitrary data within associated text block.
+                <para>
+                    Used for pointing exact parsing error location in specified expression.
+                </para>
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Location.#ctor(System.Int32,System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.Location" /> class.
+            </summary>
+            <param name="line">The line number.</param>
+            <param name="column">The column number.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"><c>line &lt;= 0</c> or <c>column &lt;= 0</c>.</exception>
+        </member>
+        <member name="P:ExpressiveAnnotations.Analysis.Location.Line">
+            <summary>
+                Gets or sets the line number.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Analysis.Location.Column">
+            <summary>
+                Gets or sets the column number.
+            </summary>
+        </member>
+        <member name="T:ExpressiveAnnotations.Analysis.TokenType">
+            <summary>
+                Token type.
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.L_AND">
+            <summary>
+                Logical conjunction (i.e. &amp;&amp;).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.L_OR">
+            <summary>
+                Logical disjunction (i.e. ||).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.B_AND">
+            <summary>
+                Bitwise AND (i.e. &amp;).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.B_OR">
+            <summary>
+                Bitwise inclusive OR (i.e. |).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.XOR">
+            <summary>
+                Bitwise exclusive OR (i.e. ^).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.L_NOT">
+            <summary>
+                Logical negation (i.e. !).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.B_NOT">
+            <summary>
+                Bitwise NOT (i.e. ~).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.L_SHIFT">
+            <summary>
+                Bitwise left shift (i.e. &lt;&lt;).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.R_SHIFT">
+            <summary>
+                Bitwise right shift (i.e. &gt;&gt;).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.GE">
+            <summary>
+                Greater than or equal to (i.e. &gt;=).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.LE">
+            <summary>
+                Less than or equal to (i.e. &lt;=).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.GT">
+            <summary>
+                Greater than (i.e. &gt;).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.LT">
+            <summary>
+                Less than (i.e. &lt;).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.EQ">
+            <summary>
+                Equal to (i.e. ==).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.NEQ">
+            <summary>
+                Not equal to (i.e. !=).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.ADD">
+            <summary>
+                Addition (i.e. +).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.SUB">
+            <summary>
+                Subtraction (i.e. -).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.MUL">
+            <summary>
+                Multiplication (i.e. *).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.DIV">
+            <summary>
+                Division (i.e. /).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.MOD">
+            <summary>
+                Modulo (i.e. %).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.INC">
+            <summary>
+                Prefix/postfix inc (i.e. ++).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.DEC">
+            <summary>
+                Prefix/postfix dec (i.e. --).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.L_PAR">
+            <summary>
+                Left parenthesis (i.e. ().
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.R_PAR">
+            <summary>
+                Right parenthesis (i.e. )).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.L_BRACKET">
+            <summary>
+                Left bracket (i.e. [).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.R_BRACKET">
+            <summary>
+                Right bracket (i.e. ]).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.QMARK">
+            <summary>
+                Question mark (i.e. ?).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.COLON">
+            <summary>
+                Colon (i.e. :).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.COMMA">
+            <summary>
+                Comma (i.e. ,).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.PERIOD">
+            <summary>
+                Period (i.e. .).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.NULL">
+            <summary>
+                NULL (i.e. null).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.INT">
+            <summary>
+                Integer literal (e.g. 123).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.BOOL">
+            <summary>
+                Boolean literal (i.e. true or false).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.FLOAT">
+            <summary>
+                Float literal (e.g. 1.5, 0.3e-2).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.BIN">
+            <summary>
+                Binary literal (e.g. 0b101).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.HEX">
+            <summary>
+                Hexadecimal literal (e.g. 0xFF).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.STRING">
+            <summary>
+                String (e.g. 'in single quotes').
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.ID">
+            <summary>
+                Identifier (i.e. names of arrays, functions, properties, constants and enums).
+            </summary>
+        </member>
+        <member name="F:ExpressiveAnnotations.Analysis.TokenType.EOF">
+            <summary>
+                End of expression.
+            </summary>
+        </member>
+        <member name="T:ExpressiveAnnotations.Analysis.TypeWall">
+            <summary>
+                Demands types compatibility for operations.
+            </summary>
+        </member>
+        <member name="T:ExpressiveAnnotations.Analysis.Token">
+            <summary>
+                Token definition.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Token.#ctor(ExpressiveAnnotations.Analysis.TokenType,System.Object,System.String,ExpressiveAnnotations.Analysis.Location)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.Token" /> class.
+            </summary>
+            <param name="type">The token type.</param>
+            <param name="value">The token value.</param>
+            <param name="rawValue">The token raw value.</param>
+            <param name="location">The token location within a specified expression.</param>
+        </member>
+        <member name="P:ExpressiveAnnotations.Analysis.Token.Type">
+            <summary>
+                Gets the token type.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Analysis.Token.Value">
+            <summary>
+                Gets the token value (converted to appropriate type).
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Analysis.Token.RawValue">
+            <summary>
+                Gets the token raw value (not converted expression string).
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Analysis.Token.Location">
+            <summary>
+                Gets or sets the token location within a specified expression.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Token.ToString">
+            <summary>
+                Generates a human-reabable string for the token instance (handy for debugging purposes).
+            </summary>
+            <returns>
+                A string that represents this instance.
+            </returns>
+        </member>
+        <member name="T:ExpressiveAnnotations.Analysis.Lexer">
+            <summary>
+                Performs the lexical analysis of a specified logical expression.
+            </summary>
+            <remarks>
+                Type is thread safe.
+            </remarks>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Lexer.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.Lexer" /> class.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Lexer.Analyze(System.String)">
+            <summary>
+                Analyzes a specified logical expression and extracts a sequence of tokens.
+            </summary>
+            <param name="expression">The logical expression.</param>
+            <returns>
+                A sequence of extracted tokens.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><c>expression</c> is null</exception>
+            <exception cref="T:ExpressiveAnnotations.Analysis.ParseErrorException"></exception>
+        </member>
+        <member name="T:ExpressiveAnnotations.Analysis.Parser">
+            <summary>
+                Performs the syntactic analysis of a specified logical expression within given context.
+            </summary>
+            <remarks>
+                Type is thread safe.
+            </remarks>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Parser.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Analysis.Parser" /> class.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Parser.Parse``2(System.String)">
+            <summary>
+                Parses a specified expression into expression tree within given context.
+            </summary>
+            <typeparam name="TContext">The type identifier of the context within which the expression is interpreted.</typeparam>
+            <typeparam name="TResult">The type identifier of the expected evaluation result.</typeparam>
+            <param name="expression">The expression.</param>
+            <returns>
+                A delegate containing the compiled version of the lambda expression described by created expression tree.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><c>expression</c> is null</exception>
+            <exception cref="T:ExpressiveAnnotations.Analysis.ParseErrorException"></exception>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Parser.Parse``1(System.Type,System.String)">
+            <summary>
+                Parses a specified expression into expression tree within given context.
+            </summary>
+            <typeparam name="TResult">The type identifier of the expected evaluation result.</typeparam>
+            <param name="context">The type instance of the context within which the expression is interpreted.</param>
+            <param name="expression">The logical expression.</param>
+            <returns>
+                A delegate containing the compiled version of the lambda expression described by created expression tree.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><c>expression</c> or <c>context</c> is <c>null</c></exception>
+            <exception cref="T:ExpressiveAnnotations.Analysis.ParseErrorException"></exception>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Parser.Parse``1(System.String)">
+            <summary>
+                Parses a specified expression into expression tree within default object context.
+            </summary>
+            <typeparam name="TResult">The type identifier of the expected evaluation result.</typeparam>
+            <param name="expression">The expression.</param>
+            <returns>
+                A delegate containing the compiled version of the lambda expression described by created expression tree.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><c>expression</c> is null</exception>
+            <exception cref="T:ExpressiveAnnotations.Analysis.ParseErrorException"></exception>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Parser.RegisterFunctionsProvider(ExpressiveAnnotations.Functions.IFunctionsProvider)">
+            <summary>
+                Registers the functions provider.
+            </summary>
+            <param name="provider">The provider.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Parser.GetFields">
+            <summary>
+                Gets names and types of properties extracted from specified expression within given context.
+            </summary>
+            <returns>
+                Dictionary containing names and types.
+            </returns>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Parser.GetConsts">
+            <summary>
+                Gets names and values of constants extracted from specified expression within given context.
+            </summary>
+            <returns>
+                Dictionary containing names and values.
+            </returns>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Parser.GetEnums">
+            <summary>
+                Gets names and values of enums extracted from specified expression within given context.
+            </summary>
+            <returns>
+                Dictionary containing names and values.
+            </returns>
+        </member>
+        <member name="M:ExpressiveAnnotations.Analysis.Parser.GetExpression">
+            <summary>
+                Gets the abstract syntax tree built during parsing.
+            </summary>
+            <returns>
+                <see cref="T:System.Linq.Expressions.Expression" /> that represents the tree.
+            </returns>
+        </member>
+        <member name="T:ExpressiveAnnotations.Functions.FunctionsManager">
+            <summary>
+                Registers new functions of predefined signatures.
+            </summary>
+            <seealso cref="T:ExpressiveAnnotations.Functions.IFunctionsManager" />
+            <seealso cref="T:ExpressiveAnnotations.Functions.IFunctionsProvider" />
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Functions.FunctionsManager" /> class.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.Recharge(ExpressiveAnnotations.Functions.IFunctionsProvider)">
+            <summary>
+                Loads complately new provider.
+            </summary>
+            <param name="provider">The provider.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.GetFunctions">
+            <summary>
+                Gets functions for the <see cref="T:ExpressiveAnnotations.Analysis.Parser" />.
+            </summary>
+            <returns>
+                Registered functions.
+            </returns>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.AddFunction(System.String,System.Linq.Expressions.LambdaExpression)">
+            <summary>
+                Register function of arbitrary signature for the parser.
+            </summary>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.AddFunction``1(System.String,System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.AddFunction``2(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.AddFunction``3(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.AddFunction``4(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.AddFunction``5(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TArg4">Fourth argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.AddFunction``6(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TArg4">Fourth argument.</typeparam>
+            <typeparam name="TArg5">Fifth argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.FunctionsManager.AddFunction``7(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TArg4">Fourth argument.</typeparam>
+            <typeparam name="TArg5">Fifth argument.</typeparam>
+            <typeparam name="TArg6">Sixth argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="T:ExpressiveAnnotations.Functions.IFunctionsManager">
+            <summary>
+                Registers new functions of predefined signatures.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsManager.Recharge(ExpressiveAnnotations.Functions.IFunctionsProvider)">
+            <summary>
+                Loads complately new provider.
+            </summary>
+            <param name="provider">The provider.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsManager.AddFunction(System.String,System.Linq.Expressions.LambdaExpression)">
+            <summary>
+                Register function of arbitrary signature for the parser.
+            </summary>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsManager.AddFunction``1(System.String,System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsManager.AddFunction``2(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsManager.AddFunction``3(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsManager.AddFunction``4(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsManager.AddFunction``5(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TArg4">Fourth argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsManager.AddFunction``6(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TArg4">Fourth argument.</typeparam>
+            <typeparam name="TArg5">Fifth argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsManager.AddFunction``7(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TArg4">Fourth argument.</typeparam>
+            <typeparam name="TArg5">Fifth argument.</typeparam>
+            <typeparam name="TArg6">Sixth argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.ParserHelper.RegisterToolchain(ExpressiveAnnotations.Analysis.Parser)">
+            <summary>
+                Registers built-in methods for expressions parser.
+            </summary>
+            <param name="parser">The parser instance.</param>
+        </member>
+        <member name="T:ExpressiveAnnotations.Functions.Toolchain">
+            <summary>
+                Contains a set of predefined methods.
+            </summary>
+            <seealso cref="T:ExpressiveAnnotations.Functions.IFunctionsProvider" />
+            <seealso cref="T:ExpressiveAnnotations.Functions.IFunctionsManager" />
+            <seealso cref="T:ExpressiveAnnotations.Functions.IFunctionsProvider" />
+        </member>
+        <member name="T:ExpressiveAnnotations.Functions.Toolchain.ParamsDelegate`2">
+            <summary>
+                Delegate taking variable number of arguments.
+            </summary>
+            <typeparam name="TElement">The type of the argument.</typeparam>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="args">The comma-separated list of arguments or an array of arguments.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="P:ExpressiveAnnotations.Functions.Toolchain.Instance">
+            <summary>
+            Gets the singleton instance.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.Recharge(ExpressiveAnnotations.Functions.IFunctionsProvider)">
+            <summary>
+                Loads complately new provider.
+            </summary>
+            <param name="provider">The provider.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.AddFunction(System.String,System.Linq.Expressions.LambdaExpression)">
+            <summary>
+                Register function of arbitrary signature for the parser.
+            </summary>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.AddFunction``1(System.String,System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.AddFunction``2(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.AddFunction``3(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.AddFunction``4(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.AddFunction``5(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TArg4">Fourth argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.AddFunction``6(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TArg4">Fourth argument.</typeparam>
+            <typeparam name="TArg5">Fifth argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.AddFunction``7(System.String,System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4,``5,``6}})">
+            <summary>
+                Registers function signature for the parser.
+            </summary>
+            <typeparam name="TArg1">First argument.</typeparam>
+            <typeparam name="TArg2">Second argument.</typeparam>
+            <typeparam name="TArg3">Third argument.</typeparam>
+            <typeparam name="TArg4">Fourth argument.</typeparam>
+            <typeparam name="TArg5">Fifth argument.</typeparam>
+            <typeparam name="TArg6">Sixth argument.</typeparam>
+            <typeparam name="TResult">Type identifier of returned result.</typeparam>
+            <param name="name">Function name.</param>
+            <param name="func">Function lambda.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.Toolchain.GetFunctions">
+            <summary>
+                Gets functions for the <see cref="T:ExpressiveAnnotations.Analysis.Parser" />.
+            </summary>
+            <returns>
+                Registered functions.
+            </returns>
+        </member>
+        <member name="T:ExpressiveAnnotations.Functions.IFunctionsProvider">
+            <summary>
+                Functions source.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Functions.IFunctionsProvider.GetFunctions">
+            <summary>
+                Gets functions for the <see cref="T:ExpressiveAnnotations.Analysis.Parser" />.
+            </summary>
+            <returns>
+                Registered functions.
+            </returns>
+        </member>
+        <member name="T:ExpressiveAnnotations.Attributes.AssertThatAttribute">
+            <summary>
+                Validation attribute, executed for non-null annotated field, which indicates that assertion given 
+                in logical expression has to be satisfied, for such a field to be considered as valid.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.AssertThatAttribute.DefaultErrorMessage">
+            <summary>
+                Gets or sets the default error message.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.AssertThatAttribute.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Attributes.AssertThatAttribute" /> class.
+            </summary>
+            <param name="expression">The logical expression based on which assertion condition is computed.</param>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.AssertThatAttribute.IsValidInternal(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+                Validates a specified value with respect to the associated validation attribute.
+                Internally used by the <see cref="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)" /> method.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="validationContext">The validation context.</param>
+            <returns>
+                An instance of the <see cref="T:System.ComponentModel.DataAnnotations.ValidationResult" /> class.
+            </returns>
+        </member>
+        <member name="T:ExpressiveAnnotations.Attributes.ExpressiveAttribute">
+            <summary>
+                Base class for expressive validation attributes.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.#ctor(System.String,System.String)">
+            <summary>
+                Constructor for expressive validation attribute.
+            </summary>
+            <param name="expression">The logical expression based on which specified condition is computed.</param>
+            <param name="errorMessage">The error message to associate with a validation control.</param>
+            <exception cref="T:System.ArgumentNullException"><c>expression</c> is null</exception>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.#ctor(System.String,System.Func{System.String})">
+            <summary>
+                Constructor for expressive validation attribute.
+            </summary>
+            <param name="expression">The logical expression based on which specified condition is computed.</param>
+            <param name="errorMessageAccessor">The error message accessor, allowing the error message to be provided dynamically.</param>
+            <exception cref="T:System.ArgumentNullException"><c>expression</c> is null</exception>
+            <remarks>
+                Allows for providing a resource accessor function that will be used to retrieve the error message.
+                An example would be to have something like, e.g.
+                CustomAttribute() : base( () =&gt; MyResources.MyErrorMessage ) {}.
+            </remarks>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.ExpressiveAttribute.CachedValidationFuncs">
+            <summary>
+                Gets the cached validation funcs.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.ExpressiveAttribute.Parser">
+            <summary>
+                Gets the parser.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.ExpressiveAttribute.PropertyType">
+            <summary>
+                Gets the annotated property type.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.ExpressiveAttribute.Expression">
+            <summary>
+                Gets the logical expression based on which specified condition is computed.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.ExpressiveAttribute.Priority">
+            <summary>
+                Gets or sets the hint, available for any concerned external components, indicating the order in which this attribute should be
+                executed among others of its kind, i.e. <see cref="T:ExpressiveAnnotations.Attributes.ExpressiveAttribute" />.
+                <para>
+                    Consumers must use the <see cref="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.GetPriority" /> method to retrieve the value, as this property getter will throw an
+                    exception if the value has not been set.
+                </para>
+            </summary>
+            <remarks>
+                Value is optional and not set by default, which means that execution order is undefined.
+                <para>
+                    Lowest value means highest priority.
+                </para>
+            </remarks>
+            <exception cref="T:System.InvalidOperationException">
+                If the getter of this property is invoked when the value has not been explicitly set using the setter.
+            </exception>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.ExpressiveAttribute.TypeId">
+            <summary>
+                When implemented in a derived class, gets a unique identifier for this <see cref="T:System.Attribute" />.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.Equals(System.Object)">
+            <summary>
+                Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+                <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.GetHashCode">
+            <summary>
+                Returns a hash code for this instance.
+            </summary>
+            <returns>
+                A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.ToString">
+            <summary>
+                Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+                A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.Compile(System.Type,System.Boolean)">
+            <summary>
+                Parses and compiles expression provided to the attribute. Compiled lambda is then cached and used for validation purposes.
+            </summary>
+            <param name="validationContextType">The type of the object to be validated.</param>
+            <param name="force">Flag indicating whether parsing should be rerun despite the fact compiled lambda already exists.</param>
+            <exception cref="T:ExpressiveAnnotations.Analysis.ParseErrorException"></exception>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.FormatErrorMessage(System.String,System.String,System.Object)">
+            <summary>
+                Formats the error message for user.
+            </summary>
+            <param name="displayName">The user-visible name of the required field to include in the formatted message.</param>
+            <param name="expression">The user-visible expression to include in the formatted message.</param>
+            <param name="objectInstance">The anotated field declaring container instance.</param>
+            <returns>
+                The localized message to present to the user.
+            </returns>
+            <exception cref="T:System.FormatException"></exception>
+            <remarks>
+                This method interprets custom format specifiers, provided to error message string, for which values or display names of model fields are extracted. Specifiers should be given
+                in braces (curly brackets), i.e. {fieldPath[:indicator]}, e.g. {field}, {field.field:n}. Braces can be escaped by double-braces, i.e. to output a { use {{ and to output a } use }}.
+            </remarks>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.FormatErrorMessage(System.String,System.String,System.Type,System.Collections.Generic.IDictionary{System.String,System.Guid}@)">
+            <summary>
+                Formats the error message for client (value indicators not resolved - replaced by guids to be dynamically extracted by client-code).
+            </summary>
+            <param name="displayName">The user-visible name of the required field to include in the formatted message.</param>
+            <param name="expression">The user-visible expression to include in the formatted message.</param>
+            <param name="objectType">The annotated field declaring container type.</param>
+            <param name="fieldsMap">The map containing fields names for which values should be extracted by client-side.</param>
+            <returns>
+                The localized message to sent to the client-side component.
+            </returns>
+            <exception cref="T:System.FormatException"></exception>
+            <remarks>
+                This method interprets custom format specifiers, provided to error message string, for which values or display names of model fields are extracted. Specifiers should be given
+                in braces (curly brackets), i.e. {fieldPath[:indicator]}, e.g. {field}, {field.field:n}. Braces can be escaped by double-braces, i.e. to output a { use {{ and to output a } use }}.
+            </remarks>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.GetPriority">
+            <summary>
+                Gets the value of <see cref="P:ExpressiveAnnotations.Attributes.ExpressiveAttribute.Priority" /> if it has been set, or <c>null</c>.
+            </summary>
+            <returns>
+                When <see cref="P:ExpressiveAnnotations.Attributes.ExpressiveAttribute.Priority" /> has been set returns the value of that property.
+                <para>
+                    When <see cref="P:ExpressiveAnnotations.Attributes.ExpressiveAttribute.Priority" /> has not been set returns <c>null</c>.
+                </para>
+            </returns>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.IsValidInternal(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+                Validates a specified value with respect to the associated validation attribute.
+                Internally used by the <see cref="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)" /> method.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="validationContext">The validation context.</param>
+            <returns>
+                An instance of the <see cref="T:System.ComponentModel.DataAnnotations.ValidationResult" /> class.
+            </returns>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+                Validates a specified value with respect to the associated validation attribute.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="validationContext">The validation context.</param>
+            <returns>
+                An instance of the <see cref="T:System.ComponentModel.DataAnnotations.ValidationResult" /> class.
+            </returns>
+            <exception cref="T:System.ComponentModel.DataAnnotations.ValidationException"></exception>
+        </member>
+        <member name="T:ExpressiveAnnotations.Attributes.ValueParserAttribute">
+            <summary>
+                Provides a hint for client-side script pointing at parser name, which should be used for DOM field value deserialization.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.ValueParserAttribute.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Attributes.ValueParserAttribute" /> class.
+            </summary>
+            <param name="parserName">Name of the parser.</param>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.ValueParserAttribute.ParserName">
+            <summary>
+                Gets the name of the parser.
+            </summary>
+        </member>
+        <member name="T:ExpressiveAnnotations.Attributes.RequiredIfAttribute">
+            <summary>
+                Validation attribute, executed for null-only annotated field, which indicates that such a field
+                is required to be non-null, when computed result of given logical expression is true.
+            </summary>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.RequiredIfAttribute.DefaultErrorMessage">
+            <summary>
+                Gets or sets the default error message.
+            </summary>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.RequiredIfAttribute.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:ExpressiveAnnotations.Attributes.RequiredIfAttribute" /> class.
+            </summary>
+            <param name="expression">The logical expression based on which requirement condition is computed.</param>
+        </member>
+        <member name="P:ExpressiveAnnotations.Attributes.RequiredIfAttribute.AllowEmptyStrings">
+            <summary>
+                Gets or sets a flag indicating whether the attribute should allow empty or whitespace strings.
+            </summary>
+            <remarks>
+                <c>false</c> by default.
+            </remarks>
+        </member>
+        <member name="M:ExpressiveAnnotations.Attributes.RequiredIfAttribute.IsValidInternal(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+                Validates a specified value with respect to the associated validation attribute.
+                Internally used by the <see cref="M:ExpressiveAnnotations.Attributes.ExpressiveAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)" /> method.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="validationContext">The validation context.</param>
+            <returns>
+                An instance of the <see cref="T:System.ComponentModel.DataAnnotations.ValidationResult" /> class.
+            </returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+    </members>
+</doc>
