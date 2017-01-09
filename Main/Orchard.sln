@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "OrchardSite", "http://localhost:43274", "{4C03848D-AEC2-4E48-B683-A281D997E9DF}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -45,58 +45,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAdvanced.Sitemap", "Sour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orchard.ContentTree", "Source\OrchardSite\Modules\Orchard.ContentTree\Orchard.ContentTree.csproj", "{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.Routing", "Source\OrchardSite\Modules\dcp.Routing\dcp.Routing.csproj", "{C5360625-0426-491E-B6FA-43CE4A0DAB37}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidnightPixel.jQueryValidate", "Source\OrchardSite\Modules\MidnightPixel.jQueryValidate\MidnightPixel.jQueryValidate.csproj", "{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.Utility", "Source\OrchardSite\Modules\dcp.Utility\dcp.Utility.csproj", "{6734380E-3984-4287-8EC4-F03AB58C0709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.Routing.Redirects", "Source\OrchardSite\Modules\dcp.Routing.Redirects\dcp.Routing.Redirects.csproj", "{C5360625-0426-491E-B6FA-43CE4A0DAB37}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 11
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs41
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Source\\OrchardSite\\Modules\\AgileUploaderField\\AgileUploaderField.csproj
-		SccProjectTopLevelParentUniqueName1 = Orchard.sln
-		SccProjectName1 = Source/OrchardSite/Modules/AgileUploaderField
-		SccLocalPath1 = Source\\OrchardSite\\Modules\\AgileUploaderField
-		SccProjectUniqueName2 = Source\\OrchardSite\\Modules\\dcp.Dropzone\\dcp.Dropzone.csproj
-		SccProjectTopLevelParentUniqueName2 = Orchard.sln
-		SccProjectName2 = Source/OrchardSite/Modules/dcp.Dropzone
-		SccLocalPath2 = Source\\OrchardSite\\Modules\\dcp.Dropzone
-		SccProjectUniqueName3 = Source\\OrchardSite\\Modules\\SH.GoogleAnalytics\\SH.GoogleAnalytics.csproj
-		SccProjectTopLevelParentUniqueName3 = Orchard.sln
-		SccProjectName3 = Source/OrchardSite/Modules/SH.GoogleAnalytics
-		SccLocalPath3 = Source\\OrchardSite\\Modules\\SH.GoogleAnalytics
-		SccProjectUniqueName4 = Source\\OrchardSite\\Modules\\SH.Robots\\SH.Robots.csproj
-		SccProjectTopLevelParentUniqueName4 = Orchard.sln
-		SccProjectName4 = Source/OrchardSite/Modules/SH.Robots
-		SccLocalPath4 = Source\\OrchardSite\\Modules\\SH.Robots
-		SccProjectUniqueName5 = Source\\OrchardSite\\Modules\\Vandelay.Meta\\Vandelay.Meta.csproj
-		SccProjectTopLevelParentUniqueName5 = Orchard.sln
-		SccProjectName5 = Source/OrchardSite/Modules/Vandelay.Meta
-		SccLocalPath5 = Source\\OrchardSite\\Modules\\Vandelay.Meta
-		SccProjectUniqueName6 = Source\\OrchardSite\\Modules\\WebAdvanced.Sitemap\\WebAdvanced.Sitemap.csproj
-		SccProjectTopLevelParentUniqueName6 = Orchard.sln
-		SccProjectName6 = Source/OrchardSite/Modules/WebAdvanced.Sitemap
-		SccLocalPath6 = Source\\OrchardSite\\Modules\\WebAdvanced.Sitemap
-		SccProjectUniqueName7 = Source\\OrchardSite\\Modules\\Orchard.ContentTree\\Orchard.ContentTree.csproj
-		SccProjectTopLevelParentUniqueName7 = Orchard.sln
-		SccProjectName7 = Source/OrchardSite/Modules/Orchard.ContentTree
-		SccLocalPath7 = Source\\OrchardSite\\Modules\\Orchard.ContentTree
-		SccWebProject8 = true
-		SccProjectUniqueName8 = http://localhost:43274
-		SccProjectName8 = Source/OrchardSite
-		SccLocalPath8 = Source\\OrchardSite
-		SccProjectEnlistmentChoice8 = 2
-		SccProjectUniqueName9 = Source\\OrchardSite\\Modules\\dcp.Routing\\dcp.Routing.csproj
-		SccProjectTopLevelParentUniqueName9 = Orchard.sln
-		SccProjectName9 = Source/OrchardSite/Modules/dcp.Routing
-		SccLocalPath9 = Source\\OrchardSite\\Modules\\dcp.Routing
-		SccProjectUniqueName10 = Source\\OrchardSite\\Modules\\MidnightPixel.jQueryValidate\\MidnightPixel.jQueryValidate.csproj
-		SccProjectTopLevelParentUniqueName10 = Orchard.sln
-		SccProjectName10 = Source/OrchardSite/Modules/MidnightPixel.jQueryValidate
-		SccLocalPath10 = Source\\OrchardSite\\Modules\\MidnightPixel.jQueryValidate
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -134,14 +89,18 @@ Global
 		{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6734380E-3984-4287-8EC4-F03AB58C0709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6734380E-3984-4287-8EC4-F03AB58C0709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6734380E-3984-4287-8EC4-F03AB58C0709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6734380E-3984-4287-8EC4-F03AB58C0709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -154,7 +113,59 @@ Global
 		{EAACA94E-303E-4CBF-98BB-DD12018E93B7} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{83C6A228-B496-4206-A593-D0B46FC9AA7D} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
-		{C5360625-0426-491E-B6FA-43CE4A0DAB37} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
+		{6734380E-3984-4287-8EC4-F03AB58C0709} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
+		{C5360625-0426-491E-B6FA-43CE4A0DAB37} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs41
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Source\\OrchardSite\\Modules\\AgileUploaderField\\AgileUploaderField.csproj
+		SccProjectTopLevelParentUniqueName1 = Orchard.sln
+		SccProjectName1 = Source/OrchardSite/Modules/AgileUploaderField
+		SccLocalPath1 = Source\\OrchardSite\\Modules\\AgileUploaderField
+		SccProjectUniqueName2 = Source\\OrchardSite\\Modules\\dcp.Dropzone\\dcp.Dropzone.csproj
+		SccProjectTopLevelParentUniqueName2 = Orchard.sln
+		SccProjectName2 = Source/OrchardSite/Modules/dcp.Dropzone
+		SccLocalPath2 = Source\\OrchardSite\\Modules\\dcp.Dropzone
+		SccProjectUniqueName3 = Source\\OrchardSite\\Modules\\SH.GoogleAnalytics\\SH.GoogleAnalytics.csproj
+		SccProjectTopLevelParentUniqueName3 = Orchard.sln
+		SccProjectName3 = Source/OrchardSite/Modules/SH.GoogleAnalytics
+		SccLocalPath3 = Source\\OrchardSite\\Modules\\SH.GoogleAnalytics
+		SccProjectUniqueName4 = Source\\OrchardSite\\Modules\\SH.Robots\\SH.Robots.csproj
+		SccProjectTopLevelParentUniqueName4 = Orchard.sln
+		SccProjectName4 = Source/OrchardSite/Modules/SH.Robots
+		SccLocalPath4 = Source\\OrchardSite\\Modules\\SH.Robots
+		SccProjectUniqueName5 = Source\\OrchardSite\\Modules\\Vandelay.Meta\\Vandelay.Meta.csproj
+		SccProjectTopLevelParentUniqueName5 = Orchard.sln
+		SccProjectName5 = Source/OrchardSite/Modules/Vandelay.Meta
+		SccLocalPath5 = Source\\OrchardSite\\Modules\\Vandelay.Meta
+		SccProjectUniqueName6 = Source\\OrchardSite\\Modules\\WebAdvanced.Sitemap\\WebAdvanced.Sitemap.csproj
+		SccProjectTopLevelParentUniqueName6 = Orchard.sln
+		SccProjectName6 = Source/OrchardSite/Modules/WebAdvanced.Sitemap
+		SccLocalPath6 = Source\\OrchardSite\\Modules\\WebAdvanced.Sitemap
+		SccProjectUniqueName7 = Source\\OrchardSite\\Modules\\Orchard.ContentTree\\Orchard.ContentTree.csproj
+		SccProjectTopLevelParentUniqueName7 = Orchard.sln
+		SccProjectName7 = Source/OrchardSite/Modules/Orchard.ContentTree
+		SccLocalPath7 = Source\\OrchardSite\\Modules\\Orchard.ContentTree
+		SccWebProject8 = true
+		SccProjectUniqueName8 = http://localhost:43274
+		SccProjectName8 = Source/OrchardSite
+		SccLocalPath8 = Source\\OrchardSite
+		SccProjectEnlistmentChoice8 = 2
+		SccProjectUniqueName9 = Source\\OrchardSite\\Modules\\MidnightPixel.jQueryValidate\\MidnightPixel.jQueryValidate.csproj
+		SccProjectTopLevelParentUniqueName9 = Orchard.sln
+		SccProjectName9 = Source/OrchardSite/Modules/MidnightPixel.jQueryValidate
+		SccLocalPath9 = Source\\OrchardSite\\Modules\\MidnightPixel.jQueryValidate
+		SccProjectUniqueName10 = Source\\OrchardSite\\Modules\\dcp.Utility\\dcp.Utility.csproj
+		SccProjectTopLevelParentUniqueName10 = Orchard.sln
+		SccProjectName10 = Source/OrchardSite/Modules/dcp.Utility
+		SccLocalPath10 = Source\\OrchardSite\\Modules\\dcp.Utility
+		SccProjectUniqueName11 = Source\\OrchardSite\\Modules\\dcp.Routing.Redirects\\dcp.Routing.Redirects.csproj
+		SccProjectTopLevelParentUniqueName11 = Orchard.sln
+		SccProjectName11 = Source/OrchardSite/Modules/dcp.Routing.Redirects
+		SccLocalPath11 = Source\\OrchardSite\\Modules\\dcp.Routing.Redirects
 	EndGlobalSection
 EndGlobal

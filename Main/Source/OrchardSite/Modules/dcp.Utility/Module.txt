@@ -1,0 +1,20 @@
+﻿Name: dcp.Utility
+AntiForgery: enabled
+Author: Stanislav Sotkin (dcp)
+Website: http://orchardproject.net
+Version: 1.0
+OrchardVersion: 1.9
+Description: Useful utilities
+Features:
+    dcp.Utility:
+        Description: Useful utilities
+		Category: Developer
+		Dependencies: Orchard.Taxonomies
+	dcp.Tokens:		
+		Description: New tokens (AnyParams)
+		Category: Content
+		Dependencies: Orchard.Tokens
+	dcp.Routing:		
+		Description: Extended routing by aliases
+		Category: Routing
+		Dependencies: Orchard.Alias

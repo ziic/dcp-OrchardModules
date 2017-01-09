@@ -1,0 +1,15 @@
+﻿Name: dcp.Routing.Redirects
+AntiForgery: enabled
+Author: Stanislav Sotkin
+Website: https://dcporchardmodules.codeplex.com/
+Version: 1.0.0
+OrchardVersion: 1.10.1
+Description: Manage redirects
+Features:
+    dcp.Routing.Redirects:        
+		Category: Routing
+		Dependencies: MidnightPixel.jQueryValidate
+	dcp.Routing.UrlUpdating:
+		Description: Redirects when display URL of content have changed
+		Category: Routing
+		Dependencies: dcp.Routing.Redirects, Orchard.Autoroute
