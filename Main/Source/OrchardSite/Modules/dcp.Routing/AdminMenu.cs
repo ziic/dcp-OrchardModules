@@ -27,10 +27,10 @@ namespace dcp.Routing
 
                     .Add(subItem => subItem
                         .Caption(T("Redirects"))
-                        .Action("List", "Admin", new { area = "dcp.Routing.Redirects" })
+                        .Action("List", "RedirectRule", new { area = "dcp.Routing" })
                         .Add(x => x
                             .Caption(T("List"))
-                            .Action("List", "Admin", new { area = "dcp.Routing.Redirects" })
+                            .Action("List", "RedirectRule", new { area = "dcp.Routing" })
                             .LocalNav())
                     )
                 );
@@ -45,7 +45,7 @@ namespace dcp.Routing
         {
             builder.Add(T("Aliases"), "1.4.1", menu =>
             {
-                menu.Add(T("Extended"), "3", item => item.Action("List", "ExtendedAlias", new { area = "dcp.Utility" }).LocalNav().Permission(StandardPermissions.SiteOwner));
+                menu.Add(T("Extended"), "3", item => item.Action("List", "ExtendedAlias", new { area = "dcp.Routing" }).LocalNav().Permission(StandardPermissions.SiteOwner));
             });
         }
 

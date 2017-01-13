@@ -37,8 +37,8 @@
                     <td>@redirectRule.DestinationUrl</td>
                     <td>@redirectRule.IsPermanent</td>
                     <td>
-                        @Html.ActionLink(T("Edit").Text, "Edit", "Admin", new { id = redirectRule.Id }, null) |
-                        @Html.ActionLink(T("Delete").Text, "Delete", "Admin", new { id = redirectRule.Id }, new { itemprop = "RemoveUrl UnsafeUrl" })
+                        @Html.ActionLink(T("Edit").Text, "Edit", "RedirectRule", new { id = redirectRule.Id }, null) |
+                        @Html.ActionLink(T("Delete").Text, "Delete", "RedirectRule", new { id = redirectRule.Id }, new { itemprop = "RemoveUrl UnsafeUrl" })
                     </td>
                 </tr>
             }

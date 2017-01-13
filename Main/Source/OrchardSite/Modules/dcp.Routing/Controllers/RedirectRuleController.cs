@@ -9,12 +9,14 @@ using Orchard;
 using Orchard.Environment.Extensions;
 using Orchard.Localization;
 using Orchard.Settings;
+using Orchard.UI.Admin;
 using Orchard.UI.Navigation;
 using Orchard.UI.Notify;
 
 namespace dcp.Routing.Controllers
 {
     [OrchardFeature("dcp.Routing.Redirects")]
+    [Admin]
     public class RedirectRuleController : Controller
     {
         private readonly IRoutingAppService _routingAppService;

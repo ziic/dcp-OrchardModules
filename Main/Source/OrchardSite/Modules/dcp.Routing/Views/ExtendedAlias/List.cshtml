@@ -26,7 +26,7 @@
             <tr>
                 <td>@record.AliasRecord.Path</td>
                 <td>@record.RouteName</td>                 
-                <td>@Html.ActionLink("Edit", "Edit", new { id = record.AliasRecord.Id})</td>
+                <td>@Html.ActionLink(T("Edit").Text, "Edit", new { id = record.AliasRecord.Id})</td>
             </tr>
         }
     </tbody>

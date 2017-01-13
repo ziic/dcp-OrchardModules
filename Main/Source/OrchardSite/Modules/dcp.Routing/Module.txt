@@ -11,9 +11,12 @@ Features:
 		Category: Routing
 		Dependencies: Orchard.Alias
     dcp.Routing.Redirects:        
+		Name: dcp.Routing.Redirects
+		Description: Manage redirects
 		Category: Routing
 		Dependencies: MidnightPixel.jQueryValidate
 	dcp.Routing.UrlUpdating:
+		Name: dcp.Routing.UrlUpdating
 		Description: Redirects when display URL of content have changed
 		Category: Routing
 		Dependencies: dcp.Routing.Redirects, Orchard.Autoroute
