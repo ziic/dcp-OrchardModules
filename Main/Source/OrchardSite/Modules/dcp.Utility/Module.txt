@@ -13,8 +13,4 @@ Features:
 	dcp.Tokens:		
 		Description: New tokens (AnyParams)
 		Category: Content
-		Dependencies: Orchard.Tokens
-	dcp.Routing:		
-		Description: Extended routing by aliases
-		Category: Routing
-		Dependencies: Orchard.Alias
+		Dependencies: Orchard.Tokens	

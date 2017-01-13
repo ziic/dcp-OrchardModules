@@ -49,7 +49,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidnightPixel.jQueryValidat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.Utility", "Source\OrchardSite\Modules\dcp.Utility\dcp.Utility.csproj", "{6734380E-3984-4287-8EC4-F03AB58C0709}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.Routing.Redirects", "Source\OrchardSite\Modules\dcp.Routing.Redirects\dcp.Routing.Redirects.csproj", "{C5360625-0426-491E-B6FA-43CE4A0DAB37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.Routing", "Source\OrchardSite\Modules\dcp.Routing\dcp.Routing.csproj", "{C5360625-0426-491E-B6FA-43CE4A0DAB37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,9 +163,9 @@ Global
 		SccProjectTopLevelParentUniqueName10 = Orchard.sln
 		SccProjectName10 = Source/OrchardSite/Modules/dcp.Utility
 		SccLocalPath10 = Source\\OrchardSite\\Modules\\dcp.Utility
-		SccProjectUniqueName11 = Source\\OrchardSite\\Modules\\dcp.Routing.Redirects\\dcp.Routing.Redirects.csproj
+		SccProjectUniqueName11 = Source\\OrchardSite\\Modules\\dcp.Routing\\dcp.Routing.csproj
 		SccProjectTopLevelParentUniqueName11 = Orchard.sln
-		SccProjectName11 = Source/OrchardSite/Modules/dcp.Routing.Redirects
-		SccLocalPath11 = Source\\OrchardSite\\Modules\\dcp.Routing.Redirects
+		SccProjectName11 = Source/OrchardSite/Modules/dcp.Routing
+		SccLocalPath11 = Source\\OrchardSite\\Modules\\dcp.Routing
 	EndGlobalSection
 EndGlobal

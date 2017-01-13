@@ -53,9 +53,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Orchard.Alias">
-      <HintPath>..\Orchard.Alias\bin\Orchard.Alias.dll</HintPath>
-    </Reference>
     <Reference Include="Orchard.Core">
       <HintPath>..\..\bin\Orchard.Core.dll</HintPath>
     </Reference>
@@ -109,20 +106,13 @@
     <Content Include="Properties\AssemblyInfo.cs" />
     <Content Include="Module.txt" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\ExtendedAlias\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Projection\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ExtendedAliasController.cs" />
     <Compile Include="HelperExtenssions.cs" />
-    <Compile Include="Migrations.cs" />
-    <Compile Include="AdminMenu.cs" />
-    <Compile Include="Models\ExtendedAliasRecord.cs" />
-    <Compile Include="Routing\Routes.cs" />
     <Compile Include="SecurityShapeTableProviderBase.cs" />
-    <Compile Include="Routing\Services\ExtendedAliasService.cs" />
     <Compile Include="Services\Data\ContentRepositoryBase.cs" />
     <Compile Include="Services\Data\Filters\OwnerFilter.cs" />
     <Compile Include="Services\Data\Filters\TermFilter.cs" />
@@ -136,9 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ExtendedAlias\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
