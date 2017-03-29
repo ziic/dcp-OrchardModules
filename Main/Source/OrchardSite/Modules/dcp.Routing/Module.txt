@@ -2,7 +2,7 @@
 AntiForgery: enabled
 Author: Stanislav Sotkin
 Website: https://dcporchardmodules.codeplex.com/
-Version: 1.0.0
+Version: 1.0.1
 OrchardVersion: 1.10.1
 Description: Extended routing
 Features:

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Orchard.Alias.Implementation.Holder;
 using Orchard.Alias.Implementation.Map;
-using Orchard.Environment.Extensions;
 using Orchard.Mvc.Routes;
 
 namespace dcp.Routing.Services
@@ -76,7 +76,6 @@ namespace dcp.Routing.Services
     {
         private readonly IAliasHolder _aliasHolder;
         private readonly IDictionary<string, IEnumerable<string>> _constraintValues;
-        private readonly string _url;
         private readonly string _rewriteToUrl;
 
         public RewriteToAliasRoute(string url, string rewriteToUrl, IDictionary<string, IEnumerable<string>> constraintValues, RouteValueDictionary defaults, RouteValueDictionary constraints, IAliasHolder aliasHolder, IRouteHandler routeHandler)
@@ -85,7 +84,6 @@ namespace dcp.Routing.Services
                 {"area", "RewriteToAlias"}
             }, routeHandler)
         {
-            _url = url;
             _rewriteToUrl = rewriteToUrl;
             _constraintValues = constraintValues;
             _aliasHolder = aliasHolder;
@@ -163,7 +161,7 @@ namespace dcp.Routing.Services
             IRouteHandler routeHandler)
             : base(url, defaults, constraints, new RouteValueDictionary()
             {
-                {"area", "Ispechem"}
+                {"area", "dcp.Routing"}
             }, routeHandler)
         {
             _aliasHolder = aliasHolder;
@@ -209,17 +207,17 @@ namespace dcp.Routing.Services
         }
     }
 
-    public class ExtendedAliasRoute : Route
+    public class ExtendedAliasRoute : RouteBase, IRouteWithArea
     {
         private readonly string _url;
         private IDictionary<string, string> _routeValues;
-        private readonly IAliasHolder _aliasHolder;
         private readonly AliasMap _aliasMap;
 
+        private readonly Route _route;
+        private readonly List<string> _keys;
         public ExtendedAliasRoute(string url, IRouteHandler routeHandler, IAliasHolder aliasHolder)
-            : base(
-                url,
-            new RouteValueDictionary
+        {
+            _route = new Route(url, new RouteValueDictionary
                         {
                             {"httproute", true},
                             {"area", "dcp.Routing"}
@@ -228,16 +226,20 @@ namespace dcp.Routing.Services
             new RouteValueDictionary
             {
                 {"area", "dcp.Routing"}
-            }, routeHandler)
-        {
+                }, routeHandler);
             _url = url;
-            _aliasHolder = aliasHolder;
             _aliasMap = aliasHolder.GetMap("Contents");
+            var matches = Regex.Matches(_url, @"\{(.+?)\}");
+            _keys = new List<string>();
+            foreach (Match match in matches)
+            {
+                _keys.Add(match.Groups[1].Value);
+            }
         }
 
         public override RouteData GetRouteData(HttpContextBase httpContext)
         {
-            var dataDest = base.GetRouteData(httpContext);
+            var dataDest = _route.GetRouteData(httpContext);
 
             if (dataDest == null)
                 return null;
@@ -246,7 +248,6 @@ namespace dcp.Routing.Services
             if (!_aliasMap.TryGetAlias(_url, out aliasInfo))
                 return null;
 
-            //_aliasHolder.GetMap("Contents").TryGetAlias(_url, out aliasInfo);
 
             _routeValues = aliasInfo.RouteValues;
             
@@ -262,20 +263,33 @@ namespace dcp.Routing.Services
 
         public override VirtualPathData GetVirtualPath(RequestContext requestContext, RouteValueDictionary values)
         {           
-            var data = base.GetRouteData(requestContext.HttpContext);
-            if (data == null)
-                return base.GetVirtualPath(requestContext, values);
+            if (values.ContainsKey("area") && !requestContext.RouteData.Values.ContainsValue(values["area"]))
+                return null;
 
-            var excludeRouteKeys = new [] {"area", "httproute"};
-            var keys = data.Values.Keys.Where(x => !excludeRouteKeys.Contains(x)).ToList();                          
-            var newRouteValues = new RouteValueDictionary();
-            foreach (var value in values.Where(x => keys.Contains(x.Key)))
+            if (values.ContainsKey("controller") && !requestContext.RouteData.Values.ContainsValue(values["controller"]))
+                return null;
+
+            if (values.ContainsKey("action") && !requestContext.RouteData.Values.ContainsValue(values["action"]))
+                return null;
+
+            if (values.ContainsKey("Id") && !requestContext.RouteData.Values.ContainsValue(values["Id"]))
+                return null;
+
+            var excludeRouteKeys = new[] { "area", "action", "controller", "Id", "httproute" };
+           
+            var filteredRouteValues = values.Where(x => !excludeRouteKeys.Contains(x.Key)).ToDictionary(x => x.Key, y => y.Value);
+            var allRouteValues = new RouteValueDictionary(filteredRouteValues);
+            requestContext.RouteData.Values.Where(x => !excludeRouteKeys.Contains(x.Key) && _keys.Contains(x.Key)).ToList().ForEach(x =>
             {
-                newRouteValues.Add(value.Key, value.Value);
+                if (!allRouteValues.ContainsKey(x.Key))
+                    allRouteValues.Add(x.Key, x.Value);
+            });
+            
+            var res = _route.GetVirtualPath(requestContext, allRouteValues);
+            return res;
             }
             
-            return base.GetVirtualPath(requestContext, newRouteValues);
-        }
+        public string Area { get { return "Contents"; } }
     }
 
     
@@ -330,7 +344,7 @@ namespace dcp.Routing.Services
                         dest.Remove(routeValue.Key);
                     }
                 }
-                if (!dest.Keys.Any(x => x == routeValue.Key))
+                if (dest.Keys.All(x => x != routeValue.Key))
                     dest.Add(routeValue.Key, routeValue.Value);
             }
 
@@ -358,7 +372,7 @@ namespace dcp.Routing.Services
                         dest.Remove(routeValue.Key);
                     }
                 }
-                if (!dest.Keys.Any(x => x == routeValue.Key))
+                if (dest.Keys.All(x => x != routeValue.Key))
                     dest.Add(routeValue.Key, routeValue.Value.ToString());
             }
 
