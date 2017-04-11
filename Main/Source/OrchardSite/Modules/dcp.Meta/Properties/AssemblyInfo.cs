@@ -1,17 +1,16 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Security;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MidnightPixel.jQueryValidate")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("dcp.Meta")]
+[assembly: AssemblyDescription("Orchard module")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("Orchard")]
-[assembly: AssemblyCopyright("")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Stanislav Sotkin")]
+[assembly: AssemblyTrademark("dcp")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -20,7 +19,7 @@ using System.Security;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4b5109ff-f91d-488a-b989-cd5214d616b6")]
+[assembly: Guid("568e6ef3-4e8c-4731-bc11-401ba830d32b")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,6 +30,7 @@ using System.Security;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.2.0")]
+[assembly: AssemblyFileVersion("1.0.2.0")]
+[assembly: AssemblyCompany("dcp")]
 

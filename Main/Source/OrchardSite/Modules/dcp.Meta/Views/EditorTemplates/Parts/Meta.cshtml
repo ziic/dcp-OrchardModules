@@ -1,5 +1,6 @@
-﻿@model Vandelay.Meta.Models.MetaPart
+﻿@model dcp.Meta.Models.MetaPart
 
+@Display.TokenHint()
 <fieldset>
   <legend>SEO Meta Data</legend>
             
@@ -7,7 +8,7 @@
     @Html.LabelFor(model => model.Keywords)
   </div>
   <div class="editor-field">
-    @Html.TextBoxFor(model => model.Keywords, new { @class = "large text" })
+    @Html.TextBoxFor(model => model.Keywords, new { @class = "large text tokenized" })
     @Html.ValidationMessageFor(model => model.Keywords)
   </div>
 
@@ -15,7 +16,7 @@
     @Html.LabelFor(model => model.Description)
   </div>
   <div class="editor-field">
-    @Html.TextAreaFor(model => model.Description)
+    @Html.TextAreaFor(model => model.Description, new {@class = "tokenized" })
     @Html.ValidationMessageFor(model => model.Description)
   </div>
             

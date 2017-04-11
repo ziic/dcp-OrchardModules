@@ -5,8 +5,11 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Xml.Linq;
 using Orchard.Alias.Implementation.Holder;
 using Orchard.Alias.Implementation.Map;
+using Orchard.Alias.Records;
+using Orchard.Data;
 using Orchard.Mvc.Routes;
 
 namespace dcp.Routing.Services
@@ -56,7 +59,7 @@ namespace dcp.Routing.Services
                 foreach (var item in aliasInfo.RouteValues)
                 {
                     newRouteValues.Add(item.Key, item.Value);
-                }                
+                }
 
                 data.Values.Remove("area");
 
@@ -98,7 +101,7 @@ namespace dcp.Routing.Services
 
             foreach (var key in data.Values.Keys)
             {
-                if (!_constraintValues.Keys.Contains(key)) 
+                if (!_constraintValues.Keys.Contains(key))
                     continue;
 
                 var constrains = _constraintValues[key];
@@ -122,7 +125,7 @@ namespace dcp.Routing.Services
                 foreach (var item in aliasInfo.RouteValues)
                 {
                     newRouteValues.Add(item.Key, item.Value);
-                }   
+                }
 
                 data.Values.Remove("area");
                 newRouteValues.Merge(data.Values, true);
@@ -146,7 +149,7 @@ namespace dcp.Routing.Services
         }
 
     }
-    
+
     public class ExtendExistingAliasRoute : Route
     {
         private readonly IAliasHolder _aliasHolder;
@@ -161,7 +164,7 @@ namespace dcp.Routing.Services
             IRouteHandler routeHandler)
             : base(url, defaults, constraints, new RouteValueDictionary()
             {
-                {"area", "dcp.Routing"}
+                {"area", "Ispechem"}
             }, routeHandler)
         {
             _aliasHolder = aliasHolder;
@@ -180,7 +183,7 @@ namespace dcp.Routing.Services
 
 
             foreach (var aliasMap in maps)
-            {               
+            {
                 var newRouteValues = new Dictionary<string, string>();
                 AliasInfo aliasInfo;
 
@@ -192,7 +195,7 @@ namespace dcp.Routing.Services
                 foreach (var item in aliasInfo.RouteValues)
                 {
                     newRouteValues.Add(item.Key, item.Value);
-                }   
+                }
 
 
                 newRouteValues.Merge(data.Values, true);
@@ -214,27 +217,34 @@ namespace dcp.Routing.Services
         private readonly AliasMap _aliasMap;
 
         private readonly Route _route;
-        private readonly List<string> _keys;
-        public ExtendedAliasRoute(string url, IRouteHandler routeHandler, IAliasHolder aliasHolder)
+
+        public ExtendedAliasRoute(string url, IRouteHandler routeHandler, IAliasHolder aliasHolder, IRepository<AliasRecord> aliasRepository)
         {
-            _route = new Route(url, new RouteValueDictionary
-                        {
-                            {"httproute", true},
-                            {"area", "dcp.Routing"}
-                        },
-            new RouteValueDictionary(),
-            new RouteValueDictionary
+            var aliasRecord = aliasRepository.Fetch(x => x.Path == url).FirstOrDefault();
+
+            var defaultRouteValues = new RouteValueDictionary();
+            if (aliasRecord != null)
             {
-                {"area", "dcp.Routing"}
+                var aliasRouteValues = aliasRecord.ToDictionary();
+                foreach (var aliasRouteValue in aliasRouteValues)
+                {
+                    defaultRouteValues.Add(aliasRouteValue.Key, aliasRouteValue.Value);
+                }
+                
+            }
+
+            _route = new Route(
+                url,
+                defaultRouteValues,
+                new RouteValueDictionary(),
+                new RouteValueDictionary
+                {
+                    {"area", "dcp.Routing"}
                 }, routeHandler);
+          
             _url = url;
             _aliasMap = aliasHolder.GetMap("Contents");
-            var matches = Regex.Matches(_url, @"\{(.+?)\}");
-            _keys = new List<string>();
-            foreach (Match match in matches)
-            {
-                _keys.Add(match.Groups[1].Value);
-            }
+
         }
 
         public override RouteData GetRouteData(HttpContextBase httpContext)
@@ -243,14 +253,13 @@ namespace dcp.Routing.Services
 
             if (dataDest == null)
                 return null;
-            
+
             AliasInfo aliasInfo;
             if (!_aliasMap.TryGetAlias(_url, out aliasInfo))
                 return null;
 
-
             _routeValues = aliasInfo.RouteValues;
-            
+
 
             dataDest.Values.Remove("area");
 
@@ -262,45 +271,26 @@ namespace dcp.Routing.Services
         }
 
         public override VirtualPathData GetVirtualPath(RequestContext requestContext, RouteValueDictionary values)
-        {           
-            if (values.ContainsKey("area") && !requestContext.RouteData.Values.ContainsValue(values["area"]))
-                return null;
+        {
+            var valuesClone = new RouteValueDictionary(values);
 
-            if (values.ContainsKey("controller") && !requestContext.RouteData.Values.ContainsValue(values["controller"]))
-                return null;
-
-            if (values.ContainsKey("action") && !requestContext.RouteData.Values.ContainsValue(values["action"]))
-                return null;
-
-            if (values.ContainsKey("Id") && !requestContext.RouteData.Values.ContainsValue(values["Id"]))
-                return null;
-
-            var excludeRouteKeys = new[] { "area", "action", "controller", "Id", "httproute" };
-           
-            var filteredRouteValues = values.Where(x => !excludeRouteKeys.Contains(x.Key)).ToDictionary(x => x.Key, y => y.Value);
-            var allRouteValues = new RouteValueDictionary(filteredRouteValues);
-            requestContext.RouteData.Values.Where(x => !excludeRouteKeys.Contains(x.Key) && _keys.Contains(x.Key)).ToList().ForEach(x =>
-            {
-                if (!allRouteValues.ContainsKey(x.Key))
-                    allRouteValues.Add(x.Key, x.Value);
-            });
+            return _route.GetVirtualPath(requestContext, valuesClone);
             
-            var res = _route.GetVirtualPath(requestContext, allRouteValues);
-            return res;
-            }
-            
+        }
+
         public string Area { get { return "Contents"; } }
     }
 
-    
     public class ExtendedAliasRoutes : IRouteProvider
     {
         private readonly IAliasHolder _aliasHolder;
+        private readonly IRepository<AliasRecord> _aliasRepository;
         private readonly IExtendedAliasService _extendedAliasService;
 
-        public ExtendedAliasRoutes(IExtendedAliasService extendedAliasService, IAliasHolder aliasHolder)
+        public ExtendedAliasRoutes(IExtendedAliasService extendedAliasService, IAliasHolder aliasHolder, IRepository<AliasRecord> aliasRepository)
         {
             _aliasHolder = aliasHolder;
+            _aliasRepository = aliasRepository;
             _extendedAliasService = extendedAliasService;
         }
 
@@ -319,15 +309,16 @@ namespace dcp.Routing.Services
             return extendedAliasRecords.Select(x =>
             {
                 i++;
-                
+
                 return new RouteDescriptor
                 {
                     Name = !string.IsNullOrEmpty(x.RouteName) ? x.RouteName : "ExtendedAlias" + i,
                     Priority = 82,
-                    Route = new ExtendedAliasRoute(x.AliasRecord.Path, new MvcRouteHandler(), _aliasHolder)
+                    Route = new ExtendedAliasRoute(x.AliasRecord.Path, new MvcRouteHandler(), _aliasHolder, _aliasRepository)
                 };
             }).ToList();
         }
+
     }
 
     public static class RouteValuesHelper
@@ -389,5 +380,29 @@ namespace dcp.Routing.Services
             return dest;
         }
 
+        public static IDictionary<string, string> ToDictionary(this AliasRecord aliasRecord)
+        {
+            IDictionary<string, string> routeValues = new Dictionary<string, string>();
+            if (aliasRecord.Action.Area != null)
+            {
+                routeValues.Add("area", aliasRecord.Action.Area);
+            }
+            if (aliasRecord.Action.Controller != null)
+            {
+                routeValues.Add("controller", aliasRecord.Action.Controller);
+            }
+            if (aliasRecord.Action.Action != null)
+            {
+                routeValues.Add("action", aliasRecord.Action.Action);
+            }
+            if (!string.IsNullOrEmpty(aliasRecord.RouteValues))
+            {
+                foreach (var attr in XElement.Parse(aliasRecord.RouteValues).Attributes())
+                {
+                    routeValues.Add(attr.Name.LocalName, attr.Value);
+                }
+            }
+            return routeValues;
+        }
     }
 }

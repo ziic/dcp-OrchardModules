@@ -1,6 +1,6 @@
 ﻿using Orchard.UI.Resources;
 
-namespace MidnightPixel.jQueryValidate
+namespace dcp.jQueryValidate
 {
     public class ResourceManifest : IResourceManifestProvider
     {

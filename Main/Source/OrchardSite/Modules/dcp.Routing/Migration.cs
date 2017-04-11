@@ -37,9 +37,18 @@ namespace dcp.Routing
                     .WithLength(50))
             );
 
-            SchemaBuilder.CreateForeignKey("ExtendedAliasRecord_AliasRecord", "ExtendedAliasRecord", new[] { "AliasRecord_Id" }, "Orchard.Alias", "AliasRecord", new[] { "Id" });
+            SchemaBuilder.CreateForeignKey("ExtendedAliasRecord_AliasRecord", typeof(ExtendedAliasRecord).Name, new[] { "AliasRecord_Id" }, "Orchard.Alias", "AliasRecord", new[] { "Id" });
 
-            return 1;
+            return UpdateFrom1();
+        }
+
+        public int UpdateFrom1()
+        {
+            var tableDbName = SchemaBuilder.TableDbName(typeof(ExtendedAliasRecord).Name);
+            SchemaBuilder.ExecuteSql("ALTER TABLE " + tableDbName + " DROP CONSTRAINT [ExtendedAliasRecord_AliasRecord];");
+            SchemaBuilder.ExecuteSql("ALTER TABLE " + tableDbName + @"
+                                         ADD CONSTRAINT [ExtendedAliasRecord_AliasRecord] FOREIGN KEY([AliasRecord_Id]) REFERENCES [dbo].[Orchard_Alias_AliasRecord]([Id]) ON DELETE CASCADE; ");
+            return 2;
         }
 
     }

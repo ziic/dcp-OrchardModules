@@ -1,11 +1,11 @@
-Name: Vandelay.Meta
+Name: dcp.Meta
 AntiForgery: enabled
-Author: Bertrand Le Roy
-Website: http://weblogs.asp.net/bleroy
-Version: 1.0.1
+Author: Stanislav Sotkin
+Version: 1.0.2
 OrchardVersion: 1.10.1
 Description: Meta keyword and description for content items
 Features:
-    Vandelay.Meta:
+    dcp.Meta:
         Description: Meta keyword and description for content items
 		Category: Content
+		Dependencies: Orchard.Tokens

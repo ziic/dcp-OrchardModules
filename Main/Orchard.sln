@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "OrchardSite", "http://localhost:43274", "{4C03848D-AEC2-4E48-B683-A281D997E9DF}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -37,19 +37,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgileUploaderField", "Sourc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SH.GoogleAnalytics", "Source\OrchardSite\Modules\SH.GoogleAnalytics\SH.GoogleAnalytics.csproj", "{8DF6ED57-53F6-44E8-9BCD-40C2150A5A43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vandelay.Meta", "Source\OrchardSite\Modules\Vandelay.Meta\Vandelay.Meta.csproj", "{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SH.Robots", "Source\OrchardSite\Modules\SH.Robots\SH.Robots.csproj", "{EAACA94E-303E-4CBF-98BB-DD12018E93B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAdvanced.Sitemap", "Source\OrchardSite\Modules\WebAdvanced.Sitemap\WebAdvanced.Sitemap.csproj", "{83C6A228-B496-4206-A593-D0B46FC9AA7D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orchard.ContentTree", "Source\OrchardSite\Modules\Orchard.ContentTree\Orchard.ContentTree.csproj", "{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidnightPixel.jQueryValidate", "Source\OrchardSite\Modules\MidnightPixel.jQueryValidate\MidnightPixel.jQueryValidate.csproj", "{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.Utility", "Source\OrchardSite\Modules\dcp.Utility\dcp.Utility.csproj", "{6734380E-3984-4287-8EC4-F03AB58C0709}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.Routing", "Source\OrchardSite\Modules\dcp.Routing\dcp.Routing.csproj", "{C5360625-0426-491E-B6FA-43CE4A0DAB37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.jQueryValidate", "Source\OrchardSite\Modules\dcp.jQueryValidate\dcp.jQueryValidate.csproj", "{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dcp.Meta", "Source\OrchardSite\Modules\dcp.Meta\dcp.Meta.csproj", "{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +73,6 @@ Global
 		{8DF6ED57-53F6-44E8-9BCD-40C2150A5A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DF6ED57-53F6-44E8-9BCD-40C2150A5A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DF6ED57-53F6-44E8-9BCD-40C2150A5A43}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EAACA94E-303E-4CBF-98BB-DD12018E93B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EAACA94E-303E-4CBF-98BB-DD12018E93B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAACA94E-303E-4CBF-98BB-DD12018E93B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -89,10 +85,6 @@ Global
 		{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6734380E-3984-4287-8EC4-F03AB58C0709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6734380E-3984-4287-8EC4-F03AB58C0709}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6734380E-3984-4287-8EC4-F03AB58C0709}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -101,6 +93,14 @@ Global
 		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5360625-0426-491E-B6FA-43CE4A0DAB37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,13 +109,13 @@ Global
 		{83F3D9B3-1B7C-4B7E-88B5-0E2CBF73737F} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{BCEA07F6-CEFE-4B07-AC95-FD1B7ED7EF74} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{8DF6ED57-53F6-44E8-9BCD-40C2150A5A43} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
-		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{EAACA94E-303E-4CBF-98BB-DD12018E93B7} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{83C6A228-B496-4206-A593-D0B46FC9AA7D} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{05F4ABF9-7170-4F0F-8238-3A9D24D8AA00} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
-		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{6734380E-3984-4287-8EC4-F03AB58C0709} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 		{C5360625-0426-491E-B6FA-43CE4A0DAB37} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
+		{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
+		{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0} = {817D94E4-7D9B-4DB2-B0B3-283048E8EEA6}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 12
@@ -138,34 +138,34 @@ Global
 		SccProjectTopLevelParentUniqueName4 = Orchard.sln
 		SccProjectName4 = Source/OrchardSite/Modules/SH.Robots
 		SccLocalPath4 = Source\\OrchardSite\\Modules\\SH.Robots
-		SccProjectUniqueName5 = Source\\OrchardSite\\Modules\\Vandelay.Meta\\Vandelay.Meta.csproj
+		SccProjectUniqueName5 = Source\\OrchardSite\\Modules\\WebAdvanced.Sitemap\\WebAdvanced.Sitemap.csproj
 		SccProjectTopLevelParentUniqueName5 = Orchard.sln
-		SccProjectName5 = Source/OrchardSite/Modules/Vandelay.Meta
-		SccLocalPath5 = Source\\OrchardSite\\Modules\\Vandelay.Meta
-		SccProjectUniqueName6 = Source\\OrchardSite\\Modules\\WebAdvanced.Sitemap\\WebAdvanced.Sitemap.csproj
+		SccProjectName5 = Source/OrchardSite/Modules/WebAdvanced.Sitemap
+		SccLocalPath5 = Source\\OrchardSite\\Modules\\WebAdvanced.Sitemap
+		SccProjectUniqueName6 = Source\\OrchardSite\\Modules\\Orchard.ContentTree\\Orchard.ContentTree.csproj
 		SccProjectTopLevelParentUniqueName6 = Orchard.sln
-		SccProjectName6 = Source/OrchardSite/Modules/WebAdvanced.Sitemap
-		SccLocalPath6 = Source\\OrchardSite\\Modules\\WebAdvanced.Sitemap
-		SccProjectUniqueName7 = Source\\OrchardSite\\Modules\\Orchard.ContentTree\\Orchard.ContentTree.csproj
-		SccProjectTopLevelParentUniqueName7 = Orchard.sln
-		SccProjectName7 = Source/OrchardSite/Modules/Orchard.ContentTree
-		SccLocalPath7 = Source\\OrchardSite\\Modules\\Orchard.ContentTree
-		SccWebProject8 = true
-		SccProjectUniqueName8 = http://localhost:43274
-		SccProjectName8 = Source/OrchardSite
-		SccLocalPath8 = Source\\OrchardSite
-		SccProjectEnlistmentChoice8 = 2
-		SccProjectUniqueName9 = Source\\OrchardSite\\Modules\\MidnightPixel.jQueryValidate\\MidnightPixel.jQueryValidate.csproj
+		SccProjectName6 = Source/OrchardSite/Modules/Orchard.ContentTree
+		SccLocalPath6 = Source\\OrchardSite\\Modules\\Orchard.ContentTree
+		SccWebProject7 = true
+		SccProjectUniqueName7 = http://localhost:43274
+		SccProjectName7 = Source/OrchardSite
+		SccLocalPath7 = Source\\OrchardSite
+		SccProjectEnlistmentChoice7 = 2
+		SccProjectUniqueName8 = Source\\OrchardSite\\Modules\\dcp.Utility\\dcp.Utility.csproj
+		SccProjectTopLevelParentUniqueName8 = Orchard.sln
+		SccProjectName8 = Source/OrchardSite/Modules/dcp.Utility
+		SccLocalPath8 = Source\\OrchardSite\\Modules\\dcp.Utility
+		SccProjectUniqueName9 = Source\\OrchardSite\\Modules\\dcp.Routing\\dcp.Routing.csproj
 		SccProjectTopLevelParentUniqueName9 = Orchard.sln
-		SccProjectName9 = Source/OrchardSite/Modules/MidnightPixel.jQueryValidate
-		SccLocalPath9 = Source\\OrchardSite\\Modules\\MidnightPixel.jQueryValidate
-		SccProjectUniqueName10 = Source\\OrchardSite\\Modules\\dcp.Utility\\dcp.Utility.csproj
+		SccProjectName9 = Source/OrchardSite/Modules/dcp.Routing
+		SccLocalPath9 = Source\\OrchardSite\\Modules\\dcp.Routing
+		SccProjectUniqueName10 = Source\\OrchardSite\\Modules\\dcp.jQueryValidate\\dcp.jQueryValidate.csproj
 		SccProjectTopLevelParentUniqueName10 = Orchard.sln
-		SccProjectName10 = Source/OrchardSite/Modules/dcp.Utility
-		SccLocalPath10 = Source\\OrchardSite\\Modules\\dcp.Utility
-		SccProjectUniqueName11 = Source\\OrchardSite\\Modules\\dcp.Routing\\dcp.Routing.csproj
+		SccProjectName10 = Source/OrchardSite/Modules/dcp.jQueryValidate
+		SccLocalPath10 = Source\\OrchardSite\\Modules\\dcp.jQueryValidate
+		SccProjectUniqueName11 = Source\\OrchardSite\\Modules\\dcp.Meta\\dcp.Meta.csproj
 		SccProjectTopLevelParentUniqueName11 = Orchard.sln
-		SccProjectName11 = Source/OrchardSite/Modules/dcp.Routing
-		SccLocalPath11 = Source\\OrchardSite\\Modules\\dcp.Routing
+		SccProjectName11 = Source/OrchardSite/Modules/dcp.Meta
+		SccLocalPath11 = Source\\OrchardSite\\Modules\\dcp.Meta
 	EndGlobalSection
 EndGlobal

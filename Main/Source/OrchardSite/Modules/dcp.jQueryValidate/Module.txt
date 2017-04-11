@@ -1,12 +1,11 @@
 ﻿Name: jQuery Validate
 AntiForgery: enabled
-Author: Rhys Lloyd
-Website: https://orchardjqueryvalid.codeplex.com/
-Version: 1.1
+Author: Stanislav Sotkin
+Version: 1.16.0
 OrchardVersion: 1.10.1
 Description: jQuery validate resources
 Features:
-    MidnightPixel.jQueryValidate:
+    dcp.jQueryValidate:
         Name: jQuery Validate
         Description: Provides a manifest of jQuery Validate scripts.
         Dependencies: Orchard.Resources

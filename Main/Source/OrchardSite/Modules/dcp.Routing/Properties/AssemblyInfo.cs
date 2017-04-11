@@ -7,11 +7,11 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("dcp.Routing")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Orchard module")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("Orchard")]
-[assembly: AssemblyCopyright("")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Stanislav Sotkin")]
+[assembly: AssemblyTrademark("dcp")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -32,6 +32,7 @@ using System.Security;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("1.10.1")]
-[assembly: AssemblyFileVersion("1.10.1")]
+[assembly: AssemblyVersion("1.0.2")]
+[assembly: AssemblyFileVersion("1.0.2")]
+[assembly: AssemblyCompany("dcp")]
 

@@ -6,18 +6,19 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3DE68FBF-D19C-4F71-A37A-A808E3A03C0D}</ProjectGuid>
+    <ProjectGuid>{F070D4DA-10ED-4165-A6A4-A0A5257B5CB0}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MidnightPixel.jQueryValidate</RootNamespace>
-    <AssemblyName>MidnightPixel.jQueryValidate</AssemblyName>
+    <RootNamespace>dcp.Meta</RootNamespace>
+    <AssemblyName>dcp.Meta</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
-    <UpgradeBackupLocation />
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
     <TargetFrameworkProfile />
     <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
@@ -28,6 +29,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,11 +60,14 @@
     <Reference Include="Orchard.Framework">
       <HintPath>..\..\bin\Orchard.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="Orchard.Tokens">
+      <HintPath>..\Orchard.Tokens\bin\Orchard.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.ComponentModel.DataAnnotations">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
@@ -76,42 +81,24 @@
     </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\additional-methods.js" />
-    <Content Include="Scripts\additional-methods.min.js">
-      <DependentUpon>additional-methods.js</DependentUpon>
-    </Content>
-    <Content Include="packages.config" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.8.2.js" />
-    <Content Include="Scripts\jquery-1.8.2.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Web.config" />
-    <Content Include="Scripts\Web.config" />
     <Content Include="Properties\AssemblyInfo.cs" />
     <Content Include="Module.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\additional-methods.min.js.map">
-      <DependentUpon>additional-methods.js</DependentUpon>
-    </Content>
+    <Compile Include="Drivers\MetaDriver.cs" />
+    <Compile Include="Handlers\MetaHandler.cs" />
+    <Compile Include="Migrations.cs" />
+    <Compile Include="Models\MetaPart.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\jquery.validate.min.js.map">
-      <DependentUpon>jquery.validate.js</DependentUpon>
-    </Content>
+    <None Include="placement.info" />
+    <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ResourceManifest.cs" />
+    <Content Include="Views\EditorTemplates\Parts\Meta.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
