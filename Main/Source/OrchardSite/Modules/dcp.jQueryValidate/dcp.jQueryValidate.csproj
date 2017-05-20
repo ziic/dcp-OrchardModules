@@ -104,6 +104,7 @@
     <Content Include="Scripts\Web.config" />
     <Content Include="Properties\AssemblyInfo.cs" />
     <Content Include="Module.txt" />
+    <Content Include="Views\UnobstrusiveValidation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\additional-methods.min.js.map">
