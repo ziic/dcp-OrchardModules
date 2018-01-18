@@ -29,6 +29,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,7 +71,7 @@
       <HintPath>..\Orchard.Alias\bin\Orchard.Alias.dll</HintPath>
     </Reference>
     <Reference Include="Orchard.Autoroute">
-      <HintPath>..\..\App_Data\Dependencies\Orchard.Autoroute.dll</HintPath>
+      <HintPath>..\Orchard.Autoroute\bin\Orchard.Autoroute.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
