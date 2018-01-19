@@ -21,12 +21,14 @@ namespace dcp.Routing.Models
         public DateTime CreatedDateTime { get; set; }
 
         [Required]
+        [StringLength(StringLength)]
         [RegularExpression(ValidRelativeUrlPattern, ErrorMessage = "Do not start with '~/'")]
         [ClientValidation]
         [Display(Name = "Source URL")]
         public string SourceUrl { get; set; }
 
         [Required]
+        [StringLength(StringLength)]
         [RegularExpression(ValidRelativeUrlPattern, ErrorMessage = "Do not start with '~/'")]
         [AssertThat("DestinationUrl != SourceUrl")]
         [ClientValidation]
@@ -36,6 +38,7 @@ namespace dcp.Routing.Models
         public bool IsPermanent { get; set; }
 
         public const string ValidRelativeUrlPattern = @"^[^\~\/\\].*";
+        public const int StringLength = 255;
     }
 
     public class ClientValidationAttribute : ValidationAttribute, IClientValidatable 

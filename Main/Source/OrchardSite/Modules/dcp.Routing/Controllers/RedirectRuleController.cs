@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Web.Mvc;
@@ -38,7 +39,10 @@ namespace dcp.Routing.Controllers
         public ActionResult List(PagerParameters pagerParameters)
         {
             var pager = new Pager(_siteService.GetSiteSettings(), pagerParameters.Page, pagerParameters.PageSize);
-            var pagerShape = _orchardServices.New.Pager(pager).TotalItemCount(_routingAppService.GetRedirectsTotalCount());
+            var totalCount = _routingAppService.GetRedirectsTotalCount();
+            var pagerShape = _orchardServices.New.Pager(pager).TotalItemCount(totalCount);
+            if (pager.PageSize == 0)
+                pager.PageSize = totalCount;
             var items = _routingAppService.GetRedirects(pager.GetStartIndex(), pager.PageSize);
             return View(new
             {
@@ -55,7 +59,9 @@ namespace dcp.Routing.Controllers
 
             if (bulkAction == "Move" && itemIds.Any())
             {
-                return Redirect("Move?" + itemIds.Aggregate(string.Empty, (a, x) => a += "itemIds=" + x + "&").TrimEnd('&'));
+                //return Redirect("Move?" + itemIds.Aggregate(string.Empty, (a, x) => a += "itemIds=" + x + "&").TrimEnd('&'));
+                TempData["itemIds"] = itemIds;
+                return Redirect("Move");
             }
 
             return List(pagerParameters);
@@ -91,7 +97,21 @@ namespace dcp.Routing.Controllers
                 return View(redirect);
             }
 
+            var isError = false;
+            try
+            {
             _routingAppService.Update(redirect);
+            }
+            catch (ApplicationException e)
+            {
+                isError = true;
+                _orchardServices.Notifier.Add(NotifyType.Error, T(e.Message));
+            }
+
+            if (isError)
+            {
+                return RedirectToAction("Edit", new { id });
+            }
 
             _orchardServices.Notifier.Add(NotifyType.Information, T("Redirect record was saved"));
 
@@ -136,7 +156,21 @@ namespace dcp.Routing.Controllers
                 return View(redirect);
             }
 
+            var isError = false;
+            try
+            {
             _routingAppService.Add(redirect);
+            }
+            catch (ApplicationException e)
+            {
+                isError = true;
+                _orchardServices.Notifier.Add(NotifyType.Error, T(e.Message));
+            }
+
+            if (isError)
+            {
+                return RedirectToAction("Add");
+            }
 
             _orchardServices.Notifier.Add(NotifyType.Information, T("Redirect record was added"));
 
@@ -146,16 +180,34 @@ namespace dcp.Routing.Controllers
         [HttpGet]
         public ActionResult Move(int[] itemIds)
         {
+            if (itemIds == null)
+            {
+                itemIds = GetItemIds();
+            }
+            if (itemIds == null || !itemIds.Any())
+                return RedirectToAction("List");
             var redirectRules = _routingAppService.GetRedirects(itemIds);
+            TempData["itemIds"] = itemIds;
+
+            var pager = new Pager(_siteService.GetSiteSettings(), 0, itemIds.Length);
+            var pagerShape = _orchardServices.New.Pager(pager).TotalItemCount(itemIds.Length);
             return View(new 
             {
-                Items = redirectRules
+                Items = redirectRules,
+                PagerShape = pagerShape
             }.ToExpando());
         }
         
         [HttpPost]
         public ActionResult Move(string bulkAction, int[] itemIds)
         {
+            if (itemIds == null)
+            {
+                itemIds = GetItemIds();
+            }
+
+            if (itemIds == null || !itemIds.Any())
+                return RedirectToAction("List");
             if (string.IsNullOrEmpty(bulkAction) || bulkAction == "None")
                 return Move(itemIds);
 
@@ -171,6 +223,31 @@ namespace dcp.Routing.Controllers
             }
 
             return RedirectToAction("List");
+        }
+        private int[] GetItemIds()
+        {
+            int[] itemIds = null;
+            if (TempData["itemIds"] != null)
+            {
+                itemIds = (int[])TempData["itemIds"];
+            }
+            else
+            {
+                var itemIdsStr = ControllerContext.RequestContext.HttpContext.Request.QueryString["itemIds"];
+                if (!string.IsNullOrWhiteSpace(itemIdsStr))
+                {
+
+                    try
+                    {
+                        itemIds = itemIdsStr.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+            return itemIds;
         }
     }
 

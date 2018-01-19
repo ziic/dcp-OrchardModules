@@ -1,0 +1,14 @@
+﻿Name: BDN Route Debug
+AntiForgery: enabled
+Author: Ingvar Ljosland @ Bring Dialog Norge AS
+Website: http://www.bring.no/bring-dialog
+Version: 1.4.2
+OrchardVersion: 1.10.1
+Category: Developer
+Description: Bring Dialog Norge AS - Route debug module
+Features:
+	BDN Route Debug Widget:
+        Name: BDN Route Debug Widget
+		Category: Developer
+		Description: Bring Dialog Norge AS - Route debug module widget
+        Dependencies: Orchard.Resources

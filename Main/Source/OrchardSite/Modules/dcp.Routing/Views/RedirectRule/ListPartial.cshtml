@@ -46,7 +46,7 @@
     </fieldset>
 }
 
-@if (((IDictionary<string, object>) Model).ContainsKey("SomeMember"))
+@if (Model.PagerShape != null)
 {
     @Display(Model.PagerShape)
 }

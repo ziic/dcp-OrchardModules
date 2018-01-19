@@ -1,0 +1,10 @@
+﻿Name: dcp.WebApiHelpPage
+AntiForgery: enabled
+Author: Stanislav Sotkin
+Version: 1.0
+OrchardVersion: 1.10.2
+Description: WebApi help pages
+Features:
+    dcp.WebApiHelpPage:
+        Description: Web Api help pages
+		Category: Developer

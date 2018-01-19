@@ -1,0 +1,34 @@
+﻿@using BDN.Orc.RouteDebug.Models;
+@{
+    Style.Require("RouteView.css");
+    
+    Script.Require("jQuery");
+    Script.Require("jQueryUI_Resizable");
+    Script.Include("RouteView.js");    
+}
+
+
+<link href="~/Modules/BDN.Orc.RouteDebug/Styles/RouteView.css" rel="stylesheet" />
+<div id="routeViewToggle">
+    <span id="RouteCount"></span> <span id="route-toggle-info">@T("Routes")</span><span id="openRouteIcon" class="route-icon ui-icon ui-icon-circle-triangle-s">
+    </span><span id="closeRouteIcon" style="display: none" class="route-icon ui-icon ui-icon-circle-triangle-n">
+    </span>
+</div>
+<div id="routeViewContainer" style="display: none">
+    @{
+        var routes = (IEnumerable<RouteModel>)Model.Routes;
+        var current = string.Join(", ", routes.Where(x => x.RouteNode.GetRouteData(Context) != null).Select(x => T("Feature: {0}", x.Feature) +" - " + T("Url: {0}", x.Url)));
+    }
+    <div class="route-info">
+        <span class="route-label">@T("Route hit:")</span>@current</div>
+    <div class="route-info">
+        <span class="route-label">@T("Filter:")</span><input class="text" type="text" id="RouteViewFilter" /></div>
+    <div class="route-info">
+        <span class="route-label">@T("Routes:")</span></div>
+    <ul>
+        @foreach (var item in routes)
+        {
+            <li>@T("Feature: {0}", item.Feature) - @T("Url: {0}", item.Url) - @T("Priority: {0}", item.Priority)</li>
+        }
+    </ul>
+</div>

@@ -11,7 +11,7 @@ namespace dcp.Utility.Services.Data
         IHqlQuery ExecuteFilter(IHqlQuery query);
     }
 
-    public static class HqlQueryFilterHelper
+    public static class HqlQueryHelper
     {
         public static IHqlQuery ApplyFilters(this IHqlQuery query, params IHqlQueryFilter[] filters)
         {
@@ -22,5 +22,20 @@ namespace dcp.Utility.Services.Data
         {
             return filters.Aggregate(query, (current, filter) => filter.ExecuteFilter(current));
         }
+
+        public static IHqlQuery ApplyOrders(this IHqlQuery query, params IHqlQueryOrder[] orders)
+        {
+            return ApplyOrders(query, orders.AsEnumerable());
+        }
+
+        public static IHqlQuery ApplyOrders(this IHqlQuery query, IEnumerable<IHqlQueryOrder> orders)
+        {
+            return orders.Aggregate(query, (current, filter) => filter.ExecuteOrderAsc(current));
+        }
+    }
+
+    public interface IHqlQueryOrder
+    {
+        IHqlQuery ExecuteOrderAsc(IHqlQuery query);
     }
 }

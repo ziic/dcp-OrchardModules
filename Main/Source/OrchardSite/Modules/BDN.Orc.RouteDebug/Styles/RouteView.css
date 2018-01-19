@@ -1,0 +1,77 @@
+﻿#routeViewToggle, #routeViewContainer
+{
+    background-color: White;
+    font-family: Lucida Console, Arial
+}
+
+#routeViewToggle
+{
+    width: 100px;
+    overflow: auto;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    height: 18px;
+    z-index: 999;
+    cursor: pointer;
+    display: inline;
+    font-size: 12px;   
+}
+
+#routeViewContainer
+{
+    height: 200px;
+    overflow: auto;
+    position: fixed;
+    right: 0px;
+    top: 18px;
+    z-index: 999;
+    border: 1px solid black;
+    font-size: 10px;
+    min-width: 400px;
+}
+
+#RouteViewFilter
+{
+    display: inline;
+    padding: 0px;
+}
+
+#route-toggle-info
+{
+    position: fixed;
+    top: 3px;
+    right: 20px;
+}
+
+#RouteCount
+{
+    position: fixed;
+    top: 3px;
+    right: 70px;
+}
+
+.route-info
+{
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.route-label
+{
+    padding-right: 10px;
+}
+
+.route-icon
+{
+    position: fixed;
+    right: 0px;
+    top: 0px;
+}
+
+#routeViewContainer ul
+{
+    margin-left: 25px;
+    margin-top: 10px;
+    line-height: 12px;
+}

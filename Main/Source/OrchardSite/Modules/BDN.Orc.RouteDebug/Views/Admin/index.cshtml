@@ -1,0 +1,45 @@
+﻿@model BDN.Orc.RouteDebug.ViewModels.RoutesIndexViewModel
+@{
+    Layout.Title = T("Routes").ToString();
+}
+@using (Html.BeginFormAntiForgeryPost())
+{ 
+    <fieldset class="bulk-actions">
+        <label for="filterResults">@T("Filter:")</label>
+        @Html.TextBoxFor(m => m.Filter, new { @class = "text" })
+        <button type="submit" name="submit.Filter" value="@T("Filter")">@T("Filter")</button>
+    </fieldset>
+    <fieldset>
+        <table class="items">
+            <thead>
+                <tr>
+                    <th scope="col">@T("Feature")
+                    </th>
+                    <th scope="col">@T("Url")
+                    </th>
+                    <th scope="col">@T("Priority")
+                    </th>
+                    <th scope="col">@T("Defaults")
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model.Routes)
+            { 
+                <tr>
+                    <td>
+                        @item.Feature
+                    </td>
+                     <td>
+                        @item.Url
+                    </td>
+                     <td>
+                        @item.Priority
+                    </td>
+                     <td>
+                        @item.Defaults
+                    </td>
+                </tr>
+            }
+        </table>
+    </fieldset>
+}

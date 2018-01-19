@@ -3,13 +3,13 @@ AntiForgery: enabled
 Author: Stanislav Sotkin (dcp)
 Website: http://orchardproject.net
 Version: 1.0
-OrchardVersion: 1.9
+OrchardVersion: 1.10.2
 Description: Useful utilities
 Features:
     dcp.Utility:
         Description: Useful utilities
 		Category: Developer
-		Dependencies: Orchard.Taxonomies
+		Dependencies: Orchard.Taxonomies, Orchard.Forms, Orchard.Projections, Orchard.Users
 	dcp.Tokens:		
 		Description: New tokens (AnyParams)
 		Category: Content

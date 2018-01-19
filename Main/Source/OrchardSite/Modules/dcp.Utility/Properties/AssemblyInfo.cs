@@ -7,12 +7,13 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("dcp.Utility")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Orchard module")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyProduct("Orchard")]
-[assembly: AssemblyCopyright("")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Stanislav Sotkin")]
+[assembly: AssemblyTrademark("dcp")]
 [assembly: AssemblyCulture("")]
+[assembly: AssemblyCompany("dcp")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
