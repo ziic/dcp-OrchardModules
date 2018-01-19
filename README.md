@@ -61,3 +61,30 @@ Upgraded Orchard.ContentTree Module to use with Orchard >= 1.10.1
 ## SH.GoogleAnalytics
 
 Upgraded https://gallery.orchardproject.net/Packages/Orchard.Module.SH.GoogleAnalytics to meet requirements Orchard 1.10.1
+
+## dcp.Utility
+
+Add many useful utils and extends some Orchard features:
+
+* Projection: sort by querystring param.
+* Database layer: 
+   * base content repository 
+   * data filters:
+     * by email
+     * by content field
+     * by owner
+     * by term
+     * by title
+   * data sorting
+     * by title
+* Tokens: any request param
+* Generic helper extenstions
+  * content GetField
+  * authorize: AuthorizeAll permissions,AuthorizeAny permissions
+* Security Shape provider: configurate which shapes show or hide depends on permissions
+* UpdatableControllerBase: more friendly base controller that binds its input data
+* ViewModelContentItemBuilder: to quick build a composite shape that contains parts/shapes from other content items (usually uses as View Model so not need create a separate class) 
+
+## dcp.WebApiHelpPage
+
+Add Web Api Help pages (https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/creating-api-help-pages) for all public Api of the site.
