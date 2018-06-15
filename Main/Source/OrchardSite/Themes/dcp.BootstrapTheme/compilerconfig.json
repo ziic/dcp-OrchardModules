@@ -1,0 +1,170 @@
+﻿[
+  {
+    "outputFile": "Styles/site-default.css",
+    "inputFile": "Styles/site-default.less"
+  },
+  {
+    "outputFile": "Styles/site-cerulean.css",
+    "inputFile": "Styles/site-cerulean.less"
+  },
+  {
+    "outputFile": "Styles/site-cosmo.css",
+    "inputFile": "Styles/site-cosmo.less"
+  },
+  {
+    "outputFile": "Styles/site-cyborg.css",
+    "inputFile": "Styles/site-cyborg.less"
+  },
+  {
+    "outputFile": "Styles/site-darkly.css",
+    "inputFile": "Styles/site-darkly.less"
+  },
+  {
+    "outputFile": "Styles/site-flatly.css",
+    "inputFile": "Styles/site-flatly.less"
+  },
+  {
+    "outputFile": "Styles/site-journal.css",
+    "inputFile": "Styles/site-journal.less"
+  },
+  {
+    "outputFile": "Styles/site-lumen.css",
+    "inputFile": "Styles/site-lumen.less"
+  },
+  {
+    "outputFile": "Styles/site-paper.css",
+    "inputFile": "Styles/site-paper.less"
+  },
+  {
+    "outputFile": "Styles/site-readable.css",
+    "inputFile": "Styles/site-readable.less"
+  },
+  {
+    "outputFile": "Styles/site-sandstone.css",
+    "inputFile": "Styles/site-sandstone.less"
+  },
+  {
+    "outputFile": "Styles/site-rtl.css",
+    "inputFile": "Styles/site-rtl.less"
+  },
+  {
+    "outputFile": "Styles/site-simplex.css",
+    "inputFile": "Styles/site-simplex.less"
+  },
+  {
+    "outputFile": "Styles/site-slate.css",
+    "inputFile": "Styles/site-slate.less"
+  },
+  {
+    "outputFile": "Styles/site-spacelab.css",
+    "inputFile": "Styles/site-spacelab.less"
+  },
+  {
+    "outputFile": "Styles/site-superhero.css",
+    "inputFile": "Styles/site-superhero.less"
+  },
+  {
+    "outputFile": "Styles/site-united.css",
+    "inputFile": "Styles/site-united.less"
+  },
+  {
+    "outputFile": "Styles/site-yeti.css",
+    "inputFile": "Styles/site-yeti.less"
+  },
+  {
+    "outputFile": "Styles/site-expertv.css",
+    "inputFile": "Styles/site-expertv.less"
+  },
+  {
+    "outputFile": "Styles/site-default.css",
+    "inputFile": "Styles/site-default.scss"
+  },
+  {
+    "outputFile": "Styles/site-cerulean.css",
+    "inputFile": "Styles/site-cerulean.scss"
+  },
+  {
+    "outputFile": "Styles/site-cosmo.css",
+    "inputFile": "Styles/site-cosmo.scss"
+  },
+  {
+    "outputFile": "Styles/site-cyborg.css",
+    "inputFile": "Styles/site-cyborg.scss"
+  },
+  {
+    "outputFile": "Styles/site-darkly.css",
+    "inputFile": "Styles/site-darkly.scss"
+  },
+  {
+    "outputFile": "Styles/site-flatly.css",
+    "inputFile": "Styles/site-flatly.scss"
+  },
+  {
+    "outputFile": "Styles/site-journal.css",
+    "inputFile": "Styles/site-journal.scss"
+  },
+  {
+    "outputFile": "Styles/site-lumen.css",
+    "inputFile": "Styles/site-lumen.scss"
+  },
+  {
+    "outputFile": "Styles/site-paper.css",
+    "inputFile": "Styles/site-paper.scss"
+  },
+  {
+    "outputFile": "Styles/site-litera.css",
+    "inputFile": "Styles/site-litera.scss"
+  },
+  {
+    "outputFile": "Styles/site-lux.css",
+    "inputFile": "Styles/site-lux.scss"
+  },
+  {
+    "outputFile": "Styles/site-materia.css",
+    "inputFile": "Styles/site-materia.scss"
+  },
+  {
+    "outputFile": "Styles/site-minty.css",
+    "inputFile": "Styles/site-minty.scss"
+  },
+  {
+    "outputFile": "Styles/site-pulse.css",
+    "inputFile": "Styles/site-pulse.scss"
+  },
+  {
+    "outputFile": "Styles/site-sandstone.css",
+    "inputFile": "Styles/site-sandstone.scss"
+  },
+  {
+    "outputFile": "Styles/site-simplex.css",
+    "inputFile": "Styles/site-simplex.scss"
+  },
+  {
+    "outputFile": "Styles/site-sketchy.css",
+    "inputFile": "Styles/site-sketchy.scss"
+  },
+  {
+    "outputFile": "Styles/site-slate.css",
+    "inputFile": "Styles/site-slate.scss"
+  },
+  {
+    "outputFile": "Styles/site-solar.css",
+    "inputFile": "Styles/site-solar.scss"
+  },
+  {
+    "outputFile": "Styles/site-spacelab.css",
+    "inputFile": "Styles/site-spacelab.scss"
+  },
+  {
+    "outputFile": "Styles/site-superhero.css",
+    "inputFile": "Styles/site-superhero.scss"
+  },
+  {
+    "outputFile": "Styles/site-united.css",
+    "inputFile": "Styles/site-united.scss"
+  },
+  {
+    "outputFile": "Styles/site-yeti.css",
+    "inputFile": "Styles/site-yeti.scss"
+  }
+]

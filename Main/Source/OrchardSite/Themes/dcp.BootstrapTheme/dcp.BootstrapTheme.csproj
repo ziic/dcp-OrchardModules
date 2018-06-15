@@ -1,0 +1,833 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C811025E-4CA5-4A6C-8941-809CC9A2F3A0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dcp.BootstrapTheme</RootNamespace>
+    <AssemblyName>dcp.BootstrapTheme</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Orchard.Comments">
+      <HintPath>..\..\Modules\Orchard.Comments\bin\Orchard.Comments.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard.Core">
+      <HintPath>..\..\bin\Orchard.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard.Framework">
+      <HintPath>..\..\bin\Orchard.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard.Search">
+      <HintPath>..\..\Modules\Orchard.Search\bin\Orchard.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard.Tags">
+      <HintPath>..\..\Modules\Orchard.Tags\bin\Orchard.Tags.dll</HintPath>
+    </Reference>
+    <Reference Include="Orchard.Users">
+      <HintPath>..\..\Modules\Orchard.Users\bin\Orchard.Users.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\apple-touch-icon.png" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="Content\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="Content\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="Content\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="Content\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="Content\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="Content\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="Content\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="Content\prettyPhoto\default\default_thumb.png" />
+    <Content Include="Content\prettyPhoto\default\loader.gif" />
+    <Content Include="Content\prettyPhoto\default\sprite.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_next.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_x.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_y.png" />
+    <Content Include="Content\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="Content\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="Content\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="Content\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="Content\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="Content\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\facebook\loader.gif" />
+    <Content Include="Content\prettyPhoto\facebook\sprite.png" />
+    <Content Include="Content\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="Content\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="Content\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="Content\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="Content\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="Content\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="Content\prettyPhoto\light_square\loader.gif" />
+    <Content Include="Content\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Content\swatches\cerulean_th.png" />
+    <Content Include="Content\swatches\cosmo_th.png" />
+    <Content Include="Content\swatches\cyborg_th.png" />
+    <Content Include="Content\swatches\darkly_th.png" />
+    <Content Include="Content\swatches\default_th.png" />
+    <Content Include="Content\swatches\flatly_th.png" />
+    <Content Include="Content\swatches\journal_th.png" />
+    <Content Include="Content\swatches\litera_th.png" />
+    <Content Include="Content\swatches\lumen_th.png" />
+    <Content Include="Content\swatches\lux_th.png" />
+    <Content Include="Content\swatches\materia_th.png" />
+    <Content Include="Content\swatches\minty_th.png" />
+    <Content Include="Content\swatches\paper_th.png" />
+    <Content Include="Content\swatches\pulse_th.png" />
+    <Content Include="Content\swatches\readable_th.png" />
+    <Content Include="Content\swatches\sandstone_th.png" />
+    <Content Include="Content\swatches\simplex_th.png" />
+    <Content Include="Content\swatches\sketchy_th.png" />
+    <Content Include="Content\swatches\slate_th.png" />
+    <Content Include="Content\swatches\spacelab_th.png" />
+    <Content Include="Content\swatches\superhero_th.png" />
+    <Content Include="Content\swatches\united_th.png" />
+    <Content Include="Content\swatches\yeti_th.png" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\affix.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\alert.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\bootstrap.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\button.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\carousel.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\collapse.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\dropdown.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\modal.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\popover.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\scrollspy.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\tab.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\tooltip.js" />
+    <Content Include="Scripts\bootstrap-3.3.7\js\transition.js" />
+    <Content Include="Scripts\bootstrap-4.1.1\js\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap-4.1.1\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap-4.1.1\js\bootstrap.js" />
+    <Content Include="Scripts\bootstrap-4.1.1\js\bootstrap.min.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\hover-dropdown.js" />
+    <Content Include="Scripts\orchard-tinymce.js" />
+    <Content Include="Scripts\popper\esm\popper-utils.js" />
+    <Content Include="Scripts\popper\esm\popper-utils.min.js" />
+    <Content Include="Scripts\popper\esm\popper.js" />
+    <Content Include="Scripts\popper\esm\popper.min.js" />
+    <Content Include="Scripts\popper\popper-utils.js" />
+    <Content Include="Scripts\popper\popper-utils.min.js" />
+    <Content Include="Scripts\popper\popper.js" />
+    <Content Include="Scripts\popper\popper.min.js" />
+    <Content Include="Scripts\popper\umd\popper-utils.js" />
+    <Content Include="Scripts\popper\umd\popper-utils.min.js" />
+    <Content Include="Scripts\popper\umd\popper.js" />
+    <Content Include="Scripts\popper\umd\popper.min.js" />
+    <Content Include="Scripts\prettyPhoto\jquery.prettyPhoto.js" />
+    <Content Include="Scripts\stapel\jquery.stapel.js" />
+    <Content Include="Scripts\stapel\modernizr.custom.63321.js" />
+    <Content Include="Styles\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Styles\bootswatch-4.1.1\cerulean\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\cerulean\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\cosmo\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\cosmo\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\cyborg\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\cyborg\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\darkly\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\darkly\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\flatly\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\flatly\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\journal\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\journal\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\litera\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\litera\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\lumen\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\lumen\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\lux\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\lux\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\materia\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\materia\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\minty\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\minty\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\pulse\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\pulse\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\sandstone\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\sandstone\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\simplex\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\simplex\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\sketchy\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\sketchy\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\slate\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\slate\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\solar\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\solar\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\spacelab\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\spacelab\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\superhero\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\superhero\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\united\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\united\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch-4.1.1\yeti\bootstrap.css" />
+    <Content Include="Styles\bootswatch-4.1.1\yeti\bootstrap.min.css" />
+    <Content Include="Styles\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Styles\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Styles\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Styles\latest-twitter.css">
+      <DependentUpon>latest-twitter.less</DependentUpon>
+    </Content>
+    <Content Include="Styles\latest-twitter.min.css">
+      <DependentUpon>latest-twitter.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\prettyPhoto\prettyPhoto.css" />
+    <Content Include="Styles\site-cerulean.css">
+      <DependentUpon>site-cerulean.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-cerulean.min.css">
+      <DependentUpon>site-cerulean.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-cosmo.css">
+      <DependentUpon>site-cosmo.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-cosmo.min.css">
+      <DependentUpon>site-cosmo.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-cyborg.css">
+      <DependentUpon>site-cyborg.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-cyborg.min.css">
+      <DependentUpon>site-cyborg.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-darkly.css">
+      <DependentUpon>site-darkly.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-darkly.min.css">
+      <DependentUpon>site-darkly.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-default.css">
+      <DependentUpon>site-default.less</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-default.min.css">
+      <DependentUpon>site-default.less</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-flatly.css">
+      <DependentUpon>site-flatly.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-flatly.min.css">
+      <DependentUpon>site-flatly.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-journal.css">
+      <DependentUpon>site-journal.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-journal.min.css">
+      <DependentUpon>site-journal.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-litera.css">
+      <DependentUpon>site-litera.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-litera.min.css">
+      <DependentUpon>site-litera.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-lumen.css">
+      <DependentUpon>site-lumen.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-lumen.min.css">
+      <DependentUpon>site-lumen.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-lux.css">
+      <DependentUpon>site-lux.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-lux.min.css">
+      <DependentUpon>site-lux.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-materia.css">
+      <DependentUpon>site-materia.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-materia.min.css">
+      <DependentUpon>site-materia.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-minty.css">
+      <DependentUpon>site-minty.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-minty.min.css">
+      <DependentUpon>site-minty.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-paper.css">
+      <DependentUpon>site-paper.less</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-paper.min.css">
+      <DependentUpon>site-paper.less</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-pulse.css">
+      <DependentUpon>site-pulse.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-pulse.min.css">
+      <DependentUpon>site-pulse.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-readable.css">
+      <DependentUpon>site-readable.less</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-readable.min.css">
+      <DependentUpon>site-readable.less</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-sandstone.css">
+      <DependentUpon>site-sandstone.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-sandstone.min.css">
+      <DependentUpon>site-sandstone.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-simplex.css">
+      <DependentUpon>site-simplex.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-simplex.min.css">
+      <DependentUpon>site-simplex.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-sketchy.css">
+      <DependentUpon>site-sketchy.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-sketchy.min.css">
+      <DependentUpon>site-sketchy.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-slate.css">
+      <DependentUpon>site-slate.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-slate.min.css">
+      <DependentUpon>site-slate.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-solar.css">
+      <DependentUpon>site-solar.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-solar.min.css">
+      <DependentUpon>site-solar.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-spacelab.css">
+      <DependentUpon>site-spacelab.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-spacelab.min.css">
+      <DependentUpon>site-spacelab.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-superhero.css">
+      <DependentUpon>site-superhero.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-superhero.min.css">
+      <DependentUpon>site-superhero.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-united.css">
+      <DependentUpon>site-united.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-united.min.css">
+      <DependentUpon>site-united.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-yeti.css">
+      <DependentUpon>site-yeti.scss</DependentUpon>
+    </Content>
+    <Content Include="Styles\site-yeti.min.css">
+      <DependentUpon>site-yeti.css</DependentUpon>
+    </Content>
+    <Content Include="Styles\stapel\stapel.css" />
+    <Content Include="Web.config" />
+    <Content Include="Scripts\Web.config" />
+    <Content Include="Styles\Web.config" />
+    <Content Include="Content\Web.config" />
+    <Content Include="Theme.txt" />
+    <Content Include="Theme.png" />
+    <Content Include="Placement.info" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gravatar\Gravatar.cs" />
+    <Compile Include="Gravatar\Gremail.cs" />
+    <Compile Include="Gravatar\Grofile.cs" />
+    <Compile Include="Gravatar\GrofileInfo.cs" />
+    <Compile Include="Gravatar\Html\HtmlHelperExtensions.cs" />
+    <Compile Include="Gravatar\Html\UrlHelperExtensions.cs" />
+    <Compile Include="Handlers\BootstrapThemeSettingsPartHandler.cs" />
+    <Compile Include="MainMenu.cs" />
+    <Compile Include="Models\BootstrapThemeSettingsPart.cs" />
+    <Compile Include="ResourceManifest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts.Comment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\forms.less" />
+    <Content Include="Styles\layout.less" />
+    <Content Include="Styles\navigation.less" />
+    <Content Include="Styles\site-default.less" />
+    <Content Include="Styles\site-paper.less" />
+    <Content Include="Styles\site-readable.less" />
+    <Content Include="Styles\type.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\dcpBootstrapThemeSettings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Orchard.Users\Account\AccessDenied.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChallengeEmailFail.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChallengeEmailSent.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChallengeEmailSuccess.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\LostPassword.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\RegistrationPending.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\RequestLostPassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BadgeOfHonor.cshtml" />
+    <Content Include="Views\Branding.cshtml" />
+    <Content Include="Views\CommentReplyButton.cshtml" />
+    <Content Include="Views\Content-Blog.Detail.cshtml" />
+    <Content Include="Views\Content-BlogPost.cshtml" />
+    <Content Include="Views\Content-BlogPost.Summary.cshtml" />
+    <Content Include="Views\Document.cshtml" />
+    <Content Include="Views\Insertions.cshtml" />
+    <Content Include="Views\Layout.cshtml" />
+    <Content Include="Views\LogOn.cshtml" />
+    <Content Include="Views\Menu.cshtml" />
+    <Content Include="Views\MenuItem.cshtml" />
+    <Content Include="Views\MenuItemLinkdd.cshtml" />
+    <Content Include="Views\Message.cshtml" />
+    <Content Include="Views\Pager.cshtml" />
+    <Content Include="Views\Pager.CurrentPage.cshtml" />
+    <Content Include="Views\Pager.First.cshtml" />
+    <Content Include="Views\Pager.Gap.cshtml" />
+    <Content Include="Views\Pager.Last.cshtml" />
+    <Content Include="Views\Pager.Next.cshtml" />
+    <Content Include="Views\Pager.Previous.cshtml" />
+    <Content Include="Views\Parts.Comment.cshtml" />
+    <Content Include="Views\Parts.Comments.Count.cshtml" />
+    <Content Include="Views\Parts.Common.Body.Summary.cshtml" />
+    <Content Include="Views\Parts.ListOfComments.cshtml" />
+    <Content Include="Views\Parts.Tags.ShowTags.cshtml" />
+    <Content Include="Views\Register.cshtml" />
+    <Content Include="Views\Resources.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\NavSearch.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CommentGravatar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Blogs.RecentBlogPosts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Search.SearchForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.TwitterWidget.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\latest-twitter.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\latest-twitter.css.map">
+      <DependentUpon>latest-twitter.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.CommentForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.ZenGallery.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\yamm\yamm.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Styles\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Styles\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Styles\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Styles\bootstrap-3.3.7\less\alerts.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\badges.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\bootstrap.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\breadcrumbs.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\button-groups.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\buttons.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\carousel.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\close.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\code.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\component-animations.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\dropdowns.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\forms.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\glyphicons.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\grid.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\input-groups.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\jumbotron.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\labels.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\list-group.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\media.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\alerts.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\background-variant.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\border-radius.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\buttons.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\center-block.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\clearfix.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\forms.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\gradients.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\grid-framework.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\grid.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\hide-text.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\image.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\labels.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\list-group.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\nav-divider.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\nav-vertical-align.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\opacity.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\pagination.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\panels.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\progress-bar.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\reset-filter.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\reset-text.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\resize.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\responsive-visibility.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\size.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\tab-focus.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\table-row.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\text-emphasis.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\text-overflow.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\mixins\vendor-prefixes.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\modals.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\navbar.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\navs.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\normalize.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\pager.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\pagination.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\panels.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\popovers.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\print.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\progress-bars.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\responsive-embed.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\responsive-utilities.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\scaffolding.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\tables.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\theme.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\thumbnails.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\tooltip.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\type.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\utilities.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\variables.less" />
+    <Content Include="Styles\bootstrap-3.3.7\less\wells.less" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Styles\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_variables.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Styles\bootswatch-3.3.7\custom-bootswatch.less" />
+    <Content Include="Styles\bootswatch-3.3.7\custom-variables.less" />
+    <Content Include="Styles\bootswatch-3.3.7\paper-bootswatch.less" />
+    <Content Include="Styles\bootswatch-3.3.7\paper-variables.less" />
+    <Content Include="Styles\bootswatch-3.3.7\readable-bootswatch.less" />
+    <Content Include="Styles\bootswatch-3.3.7\readable-variables.less" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\bootstrap-grid.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\bootstrap-reboot.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\bootstrap.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_alert.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_background-variant.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_badge.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_border-radius.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_box-shadow.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_breakpoints.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_buttons.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_caret.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_clearfix.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_float.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_forms.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_gradients.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_grid-framework.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_grid.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_hover.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_image.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_list-group.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_lists.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_nav-divider.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_pagination.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_reset-text.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_resize.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_screen-reader.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_size.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_table-row.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_text-emphasis.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_text-hide.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_text-truncate.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_transition.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\mixins\_visibility.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_align.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_background.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_borders.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_clearfix.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_display.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_embed.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_flex.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_float.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_position.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_screenreaders.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_shadows.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_sizing.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_spacing.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_text.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\utilities\_visibility.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_alert.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_badge.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_breadcrumb.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_button-group.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_buttons.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_card.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_carousel.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_close.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_code.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_custom-forms.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_dropdown.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_forms.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_functions.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_grid.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_images.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_input-group.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_jumbotron.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_list-group.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_media.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_mixins.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_modal.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_nav.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_navbar.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_pagination.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_popover.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_print.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_progress.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_reboot.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_root.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_tables.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_tooltip.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_transitions.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_type.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_utilities.scss" />
+    <Content Include="Styles\bootstrap-4.1.1\scss\_variables.scss" />
+    <Content Include="Styles\site-default.scss" />
+    <Content Include="Styles\layout.scss" />
+    <Content Include="Styles\navigation.scss" />
+    <Content Include="Styles\forms.scss" />
+    <Content Include="Styles\type.scss" />
+    <Content Include="Styles\latest-twitter.scss" />
+    <Content Include="Styles\yamm\yamm.scss" />
+    <Content Include="Styles\site-cerulean.scss" />
+    <Content Include="Styles\site-cosmo.scss" />
+    <Content Include="Styles\site-cyborg.scss" />
+    <Content Include="Styles\site-darkly.scss" />
+    <Content Include="Styles\site-flatly.scss" />
+    <Content Include="Styles\site-journal.scss" />
+    <Content Include="Styles\site-lumen.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\cerulean\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\cerulean\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\cosmo\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\cosmo\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\cyborg\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\cyborg\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\darkly\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\darkly\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\flatly\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\flatly\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\journal\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\journal\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\litera\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\litera\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\lumen\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\lumen\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\lux\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\lux\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\materia\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\materia\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\minty\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\minty\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\pulse\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\pulse\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\sandstone\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\sandstone\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\simplex\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\simplex\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\sketchy\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\sketchy\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\slate\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\slate\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\solar\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\solar\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\spacelab\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\spacelab\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\superhero\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\superhero\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\united\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\united\_variables.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\yeti\_bootswatch.scss" />
+    <Content Include="Styles\bootswatch-4.1.1\yeti\_variables.scss" />
+    <Content Include="Styles\site-litera.scss" />
+    <Content Include="Styles\site-lux.scss" />
+    <Content Include="Styles\site-materia.scss" />
+    <Content Include="Styles\site-minty.scss" />
+    <Content Include="Styles\site-pulse.scss" />
+    <Content Include="Styles\site-sandstone.scss" />
+    <Content Include="Styles\site-simplex.scss" />
+    <Content Include="Styles\site-sketchy.scss" />
+    <Content Include="Styles\site-slate.scss" />
+    <Content Include="Styles\site-solar.scss" />
+    <Content Include="Styles\site-spacelab.scss" />
+    <Content Include="Styles\site-superhero.scss" />
+    <Content Include="Styles\site-united.scss" />
+    <Content Include="Styles\site-yeti.scss" />
+    <Content Include="Scripts\bootstrap-4.1.1\js\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap-4.1.1\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap-4.1.1\js\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap-4.1.1\js\bootstrap.min.js.map" />
+    <Content Include="Scripts\popper\esm\popper-utils.js.map" />
+    <Content Include="Scripts\popper\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper\esm\popper.js.map" />
+    <Content Include="Scripts\popper\esm\popper.min.js.map" />
+    <Content Include="Scripts\popper\popper-utils.js.map" />
+    <Content Include="Scripts\popper\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper\popper.js.map" />
+    <Content Include="Scripts\popper\popper.min.js.map" />
+    <Content Include="Scripts\popper\umd\popper-utils.js.map" />
+    <Content Include="Scripts\popper\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper\umd\popper.js.map" />
+    <Content Include="Scripts\popper\umd\popper.min.js.map" />
+    <Content Include="Views\MenuItemLink.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
+    <PropertyGroup>
+      <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
+    </PropertyGroup>
+    <!-- If this is an area child project, uncomment the following line:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    -->
+    <!-- If this is an area parent project, uncomment the following lines:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />
+    -->
+  </Target>
+  <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45979</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://orchard.codeplex.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

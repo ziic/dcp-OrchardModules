@@ -1,0 +1,8 @@
+﻿@import "bootswatch-4.1.1/journal/variables.scss";
+@import "site-default.scss";
+@import "bootswatch-4.1.1/journal/bootswatch.scss";
+
+// Swatch specific alterations
+.menuUserName > a:before {
+    line-height: 18px;
+}

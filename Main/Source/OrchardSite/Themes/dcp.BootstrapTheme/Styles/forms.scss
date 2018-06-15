@@ -1,0 +1,71 @@
+﻿fieldset > div {
+    @extend .form-group;
+}
+
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="file"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="range"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select,
+textarea {
+    @extend .form-control;
+}
+
+textarea {
+    height: auto; // to override the form-control height
+}
+
+button {
+    @extend .btn;
+    @extend .btn-light;
+}
+
+button.primaryAction {
+    @extend .btn-primary;
+}
+
+ol, ul {
+    @include list-unstyled;
+}
+
+.pager {
+    @extend .pagination;
+}
+
+html.orchard-users {
+    form {
+        @include make-row;
+
+        fieldset {
+            @include media-breakpoint-down(md) {
+                @include make-col(6);
+            }            
+        }
+    }
+}
+
+.field-validation-error {
+    @extend .is-invalid;
+    color: $danger;
+}
+
+.note-toolbar.btn-toolbar {
+    margin-left: 0;
+}
+
+/* RTL Support */
+html.orchard-users.rtl form fieldset {
+    float: right;
+}

@@ -1,0 +1,7 @@
+Name: dcp.BootstrapTheme
+Author: Stanislav Sotkin, Philip Senechal
+Website: https://github.com/ziic/dcp-OrchardModules
+Description: Bootstrap theme
+Version: 4.1.1
+Tags: Bootstrap
+Zones: Header, Navigation, Featured, BeforeMain, AsideFirst, Messages, BeforeContent, Content, AfterContent, AsideSecond, AfterMain, TripelFirst, TripelSecond, TripelThird, FooterQuadFirst, FooterQuadSecond, FooterQuadThird, FooterQuadFourth, Footer

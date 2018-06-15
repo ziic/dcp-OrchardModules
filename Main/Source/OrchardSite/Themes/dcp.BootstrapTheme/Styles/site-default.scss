@@ -1,0 +1,13 @@
+﻿@import "bootstrap-4.1.1/scss/bootstrap.scss";
+@import "font-awesome-4.7.0/scss/font-awesome.scss";
+@import "layout.scss";
+@import "navigation.scss";
+@import "forms.scss";
+@import "type.scss";
+@import "latest-twitter.scss";
+@import "yamm/yamm.scss";
+
+// Swatch specific alterations
+.navbar-nav > li > .dropdown-menu .dropdown-menu {
+    margin-top: -1px;
+}

@@ -1,0 +1,15 @@
+﻿$fa-font-path: "font-awesome-4.7.0/fonts";
+
+@import "font-awesome-4.7.0/scss/font-awesome.scss";
+
+.widget h1 {
+    @extend .h3;
+}
+
+.tags, .comment-count {
+    margin-right: 20px;
+}
+
+html.rtl .tags, html.rtl .comment-count {
+    margin-right: 0;
+}
